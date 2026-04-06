@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${kanit.variable} ${inter.variable}  h-full antialiased bg-[#0F1115] px-6 md:px-12 lg:px-12`}
+      className={`${kanit.variable} ${inter.variable}  h-full antialiased bg-[#0F1115] `}
     >
       <body className="">{children}</body>
     </html>

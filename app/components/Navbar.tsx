@@ -25,14 +25,14 @@ const kanit = Kanit({
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
-    <div className="flex items-center justify-between w-full  gap-2">
+    <div className="fixed bg-[#0F1115]/90 flex items-center justify-between w-full z-10 gap-2  px-6 md:px-12 lg:px-12 backdrop-blur-md">
       <BurguerMenu open={isOpen} setOpen={setIsOpen}></BurguerMenu>
       <button onClick={() => setIsOpen(true)}>
         <BurguerMenuIcon className=" inline-block  w-10 md:hidden pt-5"></BurguerMenuIcon>
       </button>
 
       <div
-        className={` ${inter.className} hidden md:flex font-display text-[#F2ECE2] text-xl   flex-col   text-center place-self-center pt-5 `}
+        className={` ${inter.className} hidden md:flex font-display text-[#F2ECE2] text-xl   flex-col   text-center place-self-center pt-2 `}
       >
         <a
           className="inline-block  transition cursor-pointer hover:scale-110 hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] "
@@ -62,7 +62,7 @@ const Navbar = () => {
           SOCIAL
         </a>
       </div>
-      <div className=" flex md:flex-1 justify-center pt-5 ">
+      <div className=" flex md:flex-1 justify-center pt-2 ">
         <div className="flex gap-5 md:gap-10 lg:gap-40">
           <a href="https://music.youtube.com/channel/UCwbVPQnlAFwhyo_JgPDINAQ">
             <YtMusicIcon className=" w-12 md:w-24  inline-block  transition cursor-pointer hover:scale-110 hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.2)] "></YtMusicIcon>
