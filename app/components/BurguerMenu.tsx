@@ -25,8 +25,8 @@ const BurguerMenu = ({ open, setOpen }: Props) => {
   return (
     <div
       className={`
-         fixed inset-0 z-50 flex flex-col gap-30 justify-center items-center
-        transition-all duration-300  text-[#F2ECE2] text-5xl  text-center  bg-black
+         fixed inset-0 z-9000 flex flex-col gap-30 justify-center items-center
+        transition-all duration-300  text-[#F2ECE2] text-5xl  text-center  bg-black/97
         ${
           open
             ? "opacity-100 translate-y-0"
@@ -34,14 +34,22 @@ const BurguerMenu = ({ open, setOpen }: Props) => {
         }
       `}
     >
-      <h1 className={` ${kanit.className} font-sans text-7xl`}>LOUI KANG</h1>
+      <h1 className={` ${kanit.className} font-sans text-9xl`}>LOUI KANG</h1>
       <div
         className={` ${inter.className}   flex flex-col  font-display gap-10 items-center`}
       >
-        <a href="#">INICIO</a>
-        <a href="#">BIO</a>
-        <a href="#">MUSIC</a>
-        <a href="#">SOCIAL</a>
+        <a href="#hero" onClick={() => setOpen(false)}>
+          INICIO
+        </a>
+        <a href="#bio" onClick={() => setOpen(false)}>
+          BIO
+        </a>
+        <a href="#" onClick={() => setOpen(false)}>
+          MUSIC
+        </a>
+        <a href="#" onClick={() => setOpen(false)}>
+          SOCIAL
+        </a>
         <button onClick={() => setOpen(false)}>
           {" "}
           <ExitIcon className="cursor-pointer w-15 "></ExitIcon>{" "}
