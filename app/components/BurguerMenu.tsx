@@ -44,10 +44,10 @@ const BurguerMenu = ({ open, setOpen }: Props) => {
         <a href="#bio" onClick={() => setOpen(false)}>
           BIO
         </a>
-        <a href="#" onClick={() => setOpen(false)}>
+        <a href="#music" onClick={() => setOpen(false)}>
           MUSIC
         </a>
-        <a href="#" onClick={() => setOpen(false)}>
+        <a href="#social" onClick={() => setOpen(false)}>
           SOCIAL
         </a>
         <button onClick={() => setOpen(false)}>
