@@ -37,10 +37,11 @@ const Bio = () => {
           <p
             className={` ${inter.className}   text-2xl leading-relaxed flex flex-wrap`}
           >
-            Loui Kang es el ray del trap en Paraguay, entre sus temas más
-            importantes se ecuentra el rap de Left 4 Dead, el cual ha inspirado
-            a miles de peruanos a rejugar el videjuego luego de su repercusión
-            en los servidores de Perú
+            Loui Kang es un artista paraguayo radicado en Ushuaia, donde el
+            aislamiento y el frío moldean su identidad sonora. Su música cruza
+            emoción cruda, noches intensas y una narrativa de caída y superación
+            constante. Entre lo íntimo y lo explosivo, construye un universo
+            donde el caos siempre empuja hacia adelante
           </p>
         </div>
       </div>
