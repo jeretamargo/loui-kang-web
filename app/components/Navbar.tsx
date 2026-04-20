@@ -46,30 +46,36 @@ const Navbar = ({ setOpen }: Props) => {
 
         <a
           className="inline-block  transition cursor-pointer hover:scale-110 hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] "
-          href="#"
+          href="#music"
         >
           MUSIC
         </a>
 
         <a
           className="inline-block  transition cursor-pointer hover:scale-110 hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]"
-          href="#"
+          href="#social"
         >
           SOCIAL
         </a>
       </div>
       <div className=" flex md:flex-1 justify-center pt-2 ">
         <div className="flex gap-5 md:gap-10 lg:gap-40">
-          <a href="https://music.youtube.com/channel/UCwbVPQnlAFwhyo_JgPDINAQ">
+          <a
+            href="https://music.youtube.com/channel/UCwbVPQnlAFwhyo_JgPDINAQ"
+            target="_blank"
+          >
             <YtMusicIcon className=" w-12 md:w-24  inline-block  transition cursor-pointer hover:scale-110 hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.2)] "></YtMusicIcon>
           </a>
-          <a href="https://open.spotify.com/artist/7AaZu0M1AMO6fAKyDv4dt2">
+          <a
+            href="https://open.spotify.com/artist/7AaZu0M1AMO6fAKyDv4dt2"
+            target="_blank"
+          >
             <SpotifyIcon className="w-12 md:w-24  inline-block  transition cursor-pointer hover:scale-110 hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.2)]"></SpotifyIcon>
           </a>
-          <a href="https://www.instagram.com/louikang_/">
+          <a href="https://www.instagram.com/louikang_/" target="_blank">
             <InstagramIcon className="w-12 md:w-24  inline-block  transition cursor-pointer hover:scale-110 hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.2)] "></InstagramIcon>
           </a>
-          <a href="https://www.youtube.com/@LouiKng">
+          <a href="https://www.youtube.com/@LouiKng" target="_blank">
             <YouTubeIcon className="w-12 md:w-24  inline-block  transition cursor-pointer hover:scale-110 hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.2)]"></YouTubeIcon>
           </a>
         </div>

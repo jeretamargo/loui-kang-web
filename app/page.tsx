@@ -4,6 +4,8 @@ import BurguerMenu from "./components/BurguerMenu";
 import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
 import Bio from "./components/Bio";
+import Music from "./components/Music";
+import Social from "./components/Social";
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -12,6 +14,8 @@ export default function Home() {
       <Navbar open={isOpen} setOpen={setIsOpen}></Navbar>
       <Hero></Hero>
       <Bio></Bio>
+      <Music></Music>
+      <Social></Social>
       <BurguerMenu open={isOpen} setOpen={setIsOpen}></BurguerMenu>
     </div>
   );

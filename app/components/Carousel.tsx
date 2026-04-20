@@ -21,13 +21,13 @@ const Carousel = () => {
     <div>
       <div className="embla relative ">
         <button
-          className=" cursor-pointer embla__prev absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white/10 backdrop-blur-md rounded-full p-2 hover:bg-white/20 transition hover:scale-105"
+          className=" cursor-pointer embla__prev absolute left-2 top-1/2 -translate-y-1/2 z-5 bg-white/10 backdrop-blur-md rounded-full p-2 hover:bg-white/20 transition hover:scale-105"
           onClick={scrollPrev}
         >
           <ArrowLeft></ArrowLeft>
         </button>
         <button
-          className=" cursor-pointer embla__next absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white/10 backdrop-blur-md rounded-full p-2 hover:bg-white/20 transition hover:scale-105"
+          className=" cursor-pointer embla__next absolute right-2 top-1/2 -translate-y-1/2 z-5 bg-white/10 backdrop-blur-md rounded-full p-2 hover:bg-white/20 transition hover:scale-105"
           onClick={scrollNext}
         >
           <ArrowRight></ArrowRight>
