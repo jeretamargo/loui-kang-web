@@ -7,7 +7,7 @@ interface Props {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-import { Kanit, Inter } from "next/font/google";
+import { Syncopate, Inter } from "next/font/google";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -15,10 +15,10 @@ const inter = Inter({
   weight: ["400", "700"],
 });
 
-const kanit = Kanit({
+const syncopate = Syncopate({
   subsets: ["latin"],
   variable: "--font-kanit",
-  weight: ["400", "700"],
+  weight: ["700"],
 });
 
 const BurguerMenu = ({ open, setOpen }: Props) => {
@@ -34,7 +34,9 @@ const BurguerMenu = ({ open, setOpen }: Props) => {
         }
       `}
     >
-      <h1 className={` ${kanit.className} font-sans text-9xl`}>LOUI KANG</h1>
+      <h1 className={` ${syncopate.className} font-sans text-9xl`}>
+        LOUI KANG
+      </h1>
       <div
         className={` ${inter.className}   flex flex-col  font-display gap-10 items-center`}
       >
