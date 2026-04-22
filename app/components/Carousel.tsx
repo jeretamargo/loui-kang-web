@@ -33,7 +33,7 @@ const Carousel = () => {
           <ArrowRight></ArrowRight>
         </button>
         <div className="embla__viewport relative" ref={emblaRef}>
-          <div className="embla__container w-100 h-100 md:w-150 md:h-150 ">
+          <div className="embla__container w-90 h-90 md:w-115 md:h-115 lg:w-150 lg:h-150 ">
             <div className="embla__slide  ">
               <img
                 src="/images/slide1.png"

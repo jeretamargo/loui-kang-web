@@ -1,4 +1,10 @@
 import React from "react";
+import { Syncopate } from "next/font/google";
+const syncopate = Syncopate({
+  subsets: ["latin"],
+  variable: "--font-kanit",
+  weight: ["700"],
+});
 
 const Hero = () => {
   return (
@@ -13,7 +19,9 @@ const Hero = () => {
         <source src="/videos/hero.webm" type="video/webm" />
       </video>
       <div className="absolute inset-0 flex items-center justify-center translate-y-40">
-        <h1 className="  text-[#F2ECE2] text-9xl  font-bold text-center z-10 drop-shadow-lg">
+        <h1
+          className={` ${syncopate.className}   text-[#F2ECE2]  text-7xl  md:text-9xl  font-bold text-center z-10 drop-shadow-black`}
+        >
           LOUI KANG
         </h1>
       </div>

@@ -1,20 +1,20 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Kanit, Inter } from "next/font/google";
 import SpotifyIcon from "./icons/SpotifyIcon";
 import YtMusicIcon from "./icons/YtMusicIcon";
 import { useScreen } from "../hooks/useScreen";
+import { Syncopate, Inter } from "next/font/google";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   weight: ["400", "700"],
 });
 
-const kanit = Kanit({
+const syncopate = Syncopate({
   subsets: ["latin"],
   variable: "--font-kanit",
-  weight: ["400", "700"],
+  weight: ["700"],
 });
 
 enum Items {
@@ -73,47 +73,103 @@ const Music = () => {
     setSelectedItem(item);
   };
   return (
-    <div className="flex flex-col  px-6 md:px-12 lg:px-40 py-15" id="music">
+    <div className="flex flex-col  px-6 md:px-12 lg:px-40 py-1" id="music">
       <h2
-        className={` ${kanit.className} text-7xl flex-end   leading-relaxed place-self-end md:place-self-start text-[#F2ECE2]  `}
+        className={` ${syncopate.className} text-6xl 2xl:text-7xl flex-end   leading-relaxed place-self-end md:place-self-start text-[#F2ECE2]  `}
       >
         MUSIC
       </h2>
-      <div className="flex w-full  justify-center md:justify-end gap-10 md:place-self-end">
+      <div className="flex w-full  justify-center md:justify-end gap-x-8 md:gap-x-10 md:place-self-end ">
         <button onClick={() => handleChange(Items.NEC)}>
           <h3
-            className={`flex ${kanit.className}  hover:scale-110 text-xl cursor-pointer transition-all leading-relaxed  text-center  ${selectedItem != Items.NEC ? "text-gray-600" : "text-[#F2ECE2] scale-110 drop-shadow-[0_0_8px_rgba(255,255,255,0.2)] "} `}
+            className={`flex ${inter.className} scale-90  hover:scale-110 text-xl 2xl:text-2xl cursor-pointer transition-all leading-relaxed  text-center  ${selectedItem != Items.NEC ? "text-gray-800 bg-gray-200  " : "text-[#0F1115] scale-120 drop-shadow-[0_0_8px_rgba(255,255,255,0.6)]  "}    p-2 rounded-md bg-gray-50 `}
           >
             NO ESTOY CUERDO
           </h3>
         </button>
         <button onClick={() => handleChange(Items.NSD)}>
           <h3
-            className={` flex ${kanit.className} hover:scale-110 text-xl cursor-pointer transition-all leading-relaxed text-center ${selectedItem != Items.NSD ? "text-gray-600" : "text-[#F2ECE2] scale-110 drop-shadow-[0_0_8px_rgba(255,255,255,0.2)]"} `}
+            className={` flex ${inter.className} scale-90 hover:scale-110 text-xl 2xl:text-2xl cursor-pointer transition-all leading-relaxed text-center ${selectedItem != Items.NSD ? "text-gray-800  bg-gray-200 " : "text-[#0F1115] scale-120 drop-shadow-[0_0_8px_rgba(255,255,255,0.2)]"}   p-2 rounded-md bg-gray-50 `}
           >
             NOCHES SIN DORMIR
           </h3>
         </button>
         <button onClick={() => handleChange(Items.DOSTRES)}>
           <h3
-            className={` flex ${kanit.className} hover:scale-110 text-4xl cursor-pointer transition-all leading-relaxed text-center ${selectedItem != Items.DOSTRES ? "text-gray-600" : "text-[#F2ECE2] scale-110 drop-shadow-[0_0_8px_rgba(255,255,255,0.2)]"}  `}
+            className={` flex ${inter.className} scale-90 hover:scale-110 text-4xl 2xl:text-3xl cursor-pointer transition-all leading-relaxed text-center ${selectedItem != Items.DOSTRES ? "text-gray-800 bg-gray-200 " : "text-[#0F1115] scale-120 drop-shadow-[0_0_8px_rgba(255,255,255,0.2)]"} px-2  rounded-md bg-gray-50 py-3 md:py-0 `}
           >
             #23
           </h3>
         </button>
       </div>
       <div className="flex flex-col md:flex-row  md:justify-between transition-opacity duration-500 animate-fade  min-h-[487.75px] md:min-h-[416px]">
-        <p
-          className={` flex  ${inter.className} md:max-w-xs   self-center text-lg md:text-2xl   mt-8 leading-relaxed text-center md:justify-self-start text-[#F2ECE2]  `}
-        >
-          {`"${
-            selectedItem === Items.NEC
-              ? NEC_DESC
-              : selectedItem === Items.NSD
-                ? NSD_DESC
-                : DOSTRES_DESC
-          }" - Loui Kang`}
-        </p>
+        <div className="flex flex-col ">
+          <p
+            className={` flex  ${inter.className} md:max-w-xs   self-center text-lg md:text-2xl 2xl:text-3xl  mt-8 leading-relaxed text-center md:justify-self-start text-[#F2ECE2]  lg:mb-8`}
+          >
+            {`"${
+              selectedItem === Items.NEC
+                ? NEC_DESC
+                : selectedItem === Items.NSD
+                  ? NSD_DESC
+                  : DOSTRES_DESC
+            }" - Loui Kang`}
+          </p>
+          <div className="flex flex-col ">
+            <p
+              className={`${inter.className} text-2xl md:text-3xl 2xl:text-4xl self-center flex mt-8 leading-relaxed text-center text-[#F2ECE2] drop-shadow-[0_0_8px_rgba(255,255,255,0.2)] `}
+            >
+              {`Escuchá ${
+                selectedItem === Items.NEC
+                  ? NEC_Title
+                  : selectedItem === Items.NSD
+                    ? NSD_Title
+                    : DOSTRES_Title
+              }`}{" "}
+            </p>
+            <div className="flex w-full justify-evenly mt-4 ">
+              <div className="flex  flex-col  items-center transition cursor-pointer hover:scale-110 hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.2)]">
+                <a
+                  href={
+                    selectedItem === Items.NEC
+                      ? NEC_Link_YTM
+                      : selectedItem === Items.NSD
+                        ? NSD_Link_YTM
+                        : dostresLink_YTM
+                  }
+                  target="_blank"
+                >
+                  <YtMusicIcon className=" w-10  md:w-15 2xl:w-20 inline-block   "></YtMusicIcon>
+                </a>
+                <p
+                  className={`${inter.className} text-xl 2xl:text-2xl flex  leading-relaxed text-center text-[#F2ECE2] `}
+                >
+                  YT Music
+                </p>
+              </div>
+              <div className="flex flex-col items-center transition cursor-pointer hover:scale-110 hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.2)]">
+                <a
+                  href={
+                    selectedItem === Items.NEC
+                      ? NEC_Link_Spotify
+                      : selectedItem === Items.NSD
+                        ? NSD_Link_Spotify
+                        : dostresLink_Spotify
+                  }
+                  target="_blank"
+                >
+                  <SpotifyIcon className=" w-10 md:w-15  2xl:w-20 inline-block   "></SpotifyIcon>
+                </a>
+                <p
+                  className={`${inter.className} text-xl 2xl:text-2xl flex  leading-relaxed text-center text-[#F2ECE2] `}
+                >
+                  Spotify
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {isLoading && (
           <div className="flex items-center justify-center content-center">
             <div className="flex mt-5 md:mr-50 w-30 h-30 border-4 content-center border-t-[#F2ECE2] border-gray-500 rounded-full animate-spin"></div>
@@ -136,59 +192,6 @@ const Music = () => {
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
           className={`mt-4 lg:h-100 self-center flex ${isLoading ? "hidden" : ""} `}
         ></iframe>
-      </div>
-      <div className="flex flex-col ">
-        <p
-          className={`${inter.className} text-3xl self-center flex mt-8 leading-relaxed text-center text-[#F2ECE2] `}
-        >
-          {`Escuchá ${
-            selectedItem === Items.NEC
-              ? NEC_Title
-              : selectedItem === Items.NSD
-                ? NSD_Title
-                : DOSTRES_Title
-          }`}{" "}
-        </p>
-        <div className="flex w-full justify-evenly mt-4 ">
-          <div className="flex  flex-col  items-center transition cursor-pointer hover:scale-110 hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.2)]">
-            <a
-              href={
-                selectedItem === Items.NEC
-                  ? NEC_Link_YTM
-                  : selectedItem === Items.NSD
-                    ? NSD_Link_YTM
-                    : dostresLink_YTM
-              }
-              target="_blank"
-            >
-              <YtMusicIcon className=" w-20  inline-block   "></YtMusicIcon>
-            </a>
-            <p
-              className={`${inter.className} text-xl flex  leading-relaxed text-center text-[#F2ECE2] `}
-            >
-              YT Music
-            </p>
-          </div>
-          <div className="flex flex-col items-center transition cursor-pointer hover:scale-110 hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.2)]">
-            <a
-              href={
-                selectedItem === Items.NEC
-                  ? NEC_Link_Spotify
-                  : selectedItem === Items.NSD
-                    ? NSD_Link_Spotify
-                    : dostresLink_Spotify
-              }
-              target="_blank"
-            >
-              <SpotifyIcon className=" w-20   inline-block   "></SpotifyIcon>
-            </a>
-            <p
-              className={`${inter.className} text-xl flex  leading-relaxed text-center text-[#F2ECE2] `}
-            >
-              Spotify
-            </p>
-          </div>
-        </div>
       </div>
     </div>
   );
