@@ -26,7 +26,7 @@ const BurguerMenu = ({ open, setOpen }: Props) => {
     <div
       className={`
          fixed inset-0 z-9000 flex flex-col gap-30 justify-center items-center
-        transition-all duration-300  text-[#F2ECE2] text-5xl  text-center  bg-black/97
+        transition-all duration-300  text-[#F2ECE2] text-4xl  text-center  bg-black/97
         ${
           open
             ? "opacity-100 translate-y-0"
@@ -34,7 +34,7 @@ const BurguerMenu = ({ open, setOpen }: Props) => {
         }
       `}
     >
-      <h1 className={` ${syncopate.className} font-sans text-9xl`}>
+      <h1 className={` ${syncopate.className} font-sans text-7xl`}>
         LOUI KANG
       </h1>
       <div
