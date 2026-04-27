@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Ref, RefObject } from "react";
 import { Syncopate } from "next/font/google";
 const syncopate = Syncopate({
   subsets: ["latin"],
@@ -6,9 +6,13 @@ const syncopate = Syncopate({
   weight: ["700"],
 });
 
-const Hero = () => {
+type HeroProps = {
+  heroRef: React.RefObject<HTMLDivElement>;
+};
+
+const Hero = ({ heroRef }: HeroProps) => {
   return (
-    <div className="relative" id="hero">
+    <div className="relative" id="hero" ref={heroRef}>
       <video
         className="relative w-full h-screen pt-20 overflow-hidden object-cover object-[center_25%] "
         autoPlay

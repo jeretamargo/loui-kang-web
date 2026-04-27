@@ -82,21 +82,21 @@ const Music = () => {
       <div className="flex w-full  justify-center md:justify-end gap-x-8 md:gap-x-10 md:place-self-end ">
         <button onClick={() => handleChange(Items.NEC)}>
           <h3
-            className={`flex ${inter.className} scale-90  hover:scale-110 text-xl 2xl:text-2xl cursor-pointer transition-all leading-relaxed  text-center  ${selectedItem != Items.NEC ? "text-gray-800 bg-gray-200  " : "text-[#0F1115] scale-120 drop-shadow-[0_0_8px_rgba(255,255,255,0.6)]  "}    p-2 rounded-md bg-gray-50 `}
+            className={`flex ${inter.className} scale-90  hover:scale-110 text-md 2xl:text-2xl cursor-pointer transition-all leading-relaxed  text-center  ${selectedItem != Items.NEC ? "text-gray-800 bg-gray-200  " : "text-[#0F1115] scale-120 drop-shadow-[0_0_8px_rgba(255,255,255,0.6)]  "}    p-1 rounded-md bg-gray-50 `}
           >
             NO ESTOY CUERDO
           </h3>
         </button>
         <button onClick={() => handleChange(Items.NSD)}>
           <h3
-            className={` flex ${inter.className} scale-90 hover:scale-110 text-xl 2xl:text-2xl cursor-pointer transition-all leading-relaxed text-center ${selectedItem != Items.NSD ? "text-gray-800  bg-gray-200 " : "text-[#0F1115] scale-120 drop-shadow-[0_0_8px_rgba(255,255,255,0.2)]"}   p-2 rounded-md bg-gray-50 `}
+            className={` flex ${inter.className} scale-90 hover:scale-110 text-md 2xl:text-2xl cursor-pointer transition-all leading-relaxed text-center ${selectedItem != Items.NSD ? "text-gray-800  bg-gray-200 " : "text-[#0F1115] scale-120 drop-shadow-[0_0_8px_rgba(255,255,255,0.2)]"}   p-1 rounded-md bg-gray-50 `}
           >
             NOCHES SIN DORMIR
           </h3>
         </button>
         <button onClick={() => handleChange(Items.DOSTRES)}>
           <h3
-            className={` flex ${inter.className} scale-90 hover:scale-110 text-4xl 2xl:text-3xl cursor-pointer transition-all leading-relaxed text-center ${selectedItem != Items.DOSTRES ? "text-gray-800 bg-gray-200 " : "text-[#0F1115] scale-120 drop-shadow-[0_0_8px_rgba(255,255,255,0.2)]"} px-2  rounded-md bg-gray-50 py-3 md:py-0 `}
+            className={` flex ${inter.className} scale-90 hover:scale-110 px-2 text-2xl 2xl:text-3xl cursor-pointer transition-all leading-relaxed text-center ${selectedItem != Items.DOSTRES ? "text-gray-800 bg-gray-200 " : "text-[#0F1115] scale-120 drop-shadow-[0_0_8px_rgba(255,255,255,0.2)]"} px-1  rounded-md bg-gray-50 py-3 md:py-0 `}
           >
             #23
           </h3>
