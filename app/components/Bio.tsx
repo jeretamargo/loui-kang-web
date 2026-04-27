@@ -15,7 +15,7 @@ const syncopate = Syncopate({
 
 const Bio = () => {
   return (
-    <div
+    <section
       className="flex flex-col lg:flex-row px-6 md:px-12 lg:px-12 py-15   items-center gap-5 place-content-start 2xl:gap-60"
       id="bio"
     >
@@ -45,7 +45,7 @@ const Bio = () => {
           </p>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

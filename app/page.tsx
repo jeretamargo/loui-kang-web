@@ -32,16 +32,23 @@ export default function Home() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
     <div>
-      <Navbar
-        open={isOpen}
-        setOpen={setIsOpen}
-        isHeroVisible={isHeroVisible}
-      ></Navbar>
-      <Hero heroRef={heroRef}></Hero>
-      <Bio></Bio>
-      <Music></Music>
-      <Social></Social>
-      <Footer></Footer>
+      <header>
+        <Navbar
+          open={isOpen}
+          setOpen={setIsOpen}
+          isHeroVisible={isHeroVisible}
+        ></Navbar>
+      </header>
+      <main>
+        <Hero heroRef={heroRef}></Hero>
+        <Bio></Bio>
+        <Music></Music>
+        <Social></Social>
+      </main>
+      <footer>
+        <Footer></Footer>
+      </footer>
+
       <BurguerMenu open={isOpen} setOpen={setIsOpen}></BurguerMenu>
     </div>
   );

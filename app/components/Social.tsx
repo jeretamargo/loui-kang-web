@@ -28,7 +28,10 @@ const syncopate = Syncopate({
 const Social = () => {
   const width = useScreen();
   return (
-    <div className="flex flex-col   px-6 md:px-12 lg:px-15 py-15" id="social">
+    <section
+      className="flex flex-col   px-6 md:px-12 lg:px-15 py-15"
+      id="social"
+    >
       <h2
         className={` ${syncopate.className} text-6xl 2xl:text-7xl flex   leading-relaxed  text-[#F2ECE2]  `}
       >
@@ -81,7 +84,7 @@ const Social = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
