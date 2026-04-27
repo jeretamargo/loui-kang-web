@@ -17,7 +17,7 @@ const kanit = Kanit({
 
 export const metadata: Metadata = {
   title: "Loui Kang",
-  description: "Escucha a Loui Kang, trap genero urbano paraguayo Y argentino ",
+  description: "Escucha a Loui Kang, trap genero urbano paraguayo y argentino ",
 };
 
 export default function RootLayout({

@@ -73,7 +73,7 @@ const Music = () => {
     setSelectedItem(item);
   };
   return (
-    <div className="flex flex-col  px-6 md:px-12 lg:px-40 py-1" id="music">
+    <section className="flex flex-col  px-6 md:px-12 lg:px-40 py-1" id="music">
       <h2
         className={` ${syncopate.className} text-6xl 2xl:text-7xl flex-end   leading-relaxed place-self-end md:place-self-start text-[#F2ECE2]  `}
       >
@@ -193,7 +193,7 @@ const Music = () => {
           className={`mt-4 lg:h-100 self-center flex ${isLoading ? "hidden" : ""} `}
         ></iframe>
       </div>
-    </div>
+    </section>
   );
 };
 

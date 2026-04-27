@@ -12,7 +12,7 @@ type HeroProps = {
 
 const Hero = ({ heroRef }: HeroProps) => {
   return (
-    <div className="relative" id="hero" ref={heroRef}>
+    <section className="relative" id="hero" ref={heroRef}>
       <video
         className="relative w-full h-screen pt-20 overflow-hidden object-cover object-[center_25%] "
         autoPlay
@@ -31,7 +31,7 @@ const Hero = ({ heroRef }: HeroProps) => {
       </div>
       {/* FADE BOTTOM */}
       <div className="absolute bottom-0 left-0 w-full z-5 h-32 bg-linear-to-t from-[#0F1115] to-transparent pointer-events-none " />
-    </div>
+    </section>
   );
 };
 
