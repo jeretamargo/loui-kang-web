@@ -7,7 +7,7 @@ const syncopate = Syncopate({
 });
 
 type HeroProps = {
-  heroRef: React.RefObject<HTMLDivElement>;
+  heroRef: React.RefObject<HTMLDivElement | null>;
 };
 
 const Hero = ({ heroRef }: HeroProps) => {
