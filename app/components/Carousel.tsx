@@ -36,7 +36,7 @@ const Carousel = () => {
           <div className="embla__container w-90 h-90 md:w-115 md:h-115 lg:w-150 lg:h-150 ">
             <div className="embla__slide  ">
               <img
-                src="/images/slide1.png"
+                src="/images/slide1.webp"
                 className="w-full h-full object-cover"
                 alt="loui kang"
                 loading="lazy"
@@ -45,7 +45,7 @@ const Carousel = () => {
             </div>
             <div className="embla__slide w-full ">
               <img
-                src="/images/slide2.png"
+                src="/images/slide2.webp"
                 className="w-full h-full object-cover"
                 alt="loui kang"
                 loading="lazy"
@@ -54,7 +54,7 @@ const Carousel = () => {
             </div>
             <div className="embla__slide w-full ">
               <img
-                src="/images/slide3.png"
+                src="/images/slide3.webp"
                 className="w-full h-full object-cover"
                 alt="loui kang"
                 loading="lazy"
@@ -63,7 +63,7 @@ const Carousel = () => {
             </div>
             <div className="embla__slide w-full">
               <img
-                src="/images/slide4.png"
+                src="/images/slide4.webp"
                 className="w-full h-full object-cover"
                 alt="loui kang"
                 loading="lazy"
