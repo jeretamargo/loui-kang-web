@@ -37,7 +37,7 @@ const Navbar = ({ setOpen, isHeroVisible }: Props) => {
         className={` ${inter.className} hidden md:flex font-display text-[#F2ECE2] text-xl   flex-col   text-center place-self-center  `}
       >
         <a
-          className="inline-block  transition cursor-pointer hover:scale-110 hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] "
+          className={` inline-block  transition cursor-pointer hover:scale-110 hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] $ `}
           href="#hero"
         >
           INICIO
@@ -68,7 +68,9 @@ const Navbar = ({ setOpen, isHeroVisible }: Props) => {
       <div className="relative flex md:flex-1 justify-center  pt-2 w-60 h-15  md:h-27 ">
         <div
           className={`absolute items-center  flex gap-x-5 md:gap-10 lg:gap-40  transition-all duration-500 ${
-            isHeroVisible ? "opacity-100 scale-100" : " opacity-0 scale-95"
+            isHeroVisible
+              ? "opacity-100 scale-100"
+              : " opacity-0 scale-95 pointer-events-none "
           }`}
         >
           <a
@@ -91,12 +93,12 @@ const Navbar = ({ setOpen, isHeroVisible }: Props) => {
           </a>
         </div>
         <div
-          className={` ${syncopate.className}  absolute transition-all duration-500   ${
+          className={` ${syncopate.className}  pointer-events-none absolute transition-all duration-500   ${
             isHeroVisible ? "opacity-0 scale-95  " : "opacity-100 scale-100"
           }`}
         >
           <h1
-            className={` ${syncopate.className}   text-[#F2ECE2]  text-3xl  md:text-6xl  font-bold text-center z-10 drop-shadow-black `}
+            className={` ${syncopate.className}  z-10 text-[#F2ECE2]  text-3xl  md:text-6xl  font-bold text-center drop-shadow-black `}
           >
             LOUI KANG
           </h1>
