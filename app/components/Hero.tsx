@@ -1,4 +1,4 @@
-import React, { Ref, RefObject } from "react";
+import React, { Dispatch, Ref, RefObject, SetStateAction } from "react";
 import { Syncopate } from "next/font/google";
 const syncopate = Syncopate({
   subsets: ["latin"],
@@ -8,9 +8,10 @@ const syncopate = Syncopate({
 
 type HeroProps = {
   heroRef: React.RefObject<HTMLDivElement | null>;
+  setIsVideoLoaded: (val: boolean) => void;
 };
 
-const Hero = ({ heroRef }: HeroProps) => {
+const Hero = ({ heroRef, setIsVideoLoaded }: HeroProps) => {
   return (
     <section className="relative" id="hero" ref={heroRef}>
       <video
@@ -19,6 +20,7 @@ const Hero = ({ heroRef }: HeroProps) => {
         muted
         loop
         playsInline
+        onLoadedData={() => setIsVideoLoaded(true)}
       >
         <source src="/videos/hero.webm" type="video/webm" />
       </video>
