@@ -37,11 +37,13 @@ const Bio = () => {
           <p
             className={` ${inter.className}  text-center lg:text-left lg:text-2xl text-xl   leading-relaxed flex flex-wrap`}
           >
-            Loui Kang es un artista paraguayo radicado en Ushuaia, donde el
-            aislamiento y el frío moldean su identidad sonora. Su música cruza
-            emoción cruda, noches intensas y una narrativa de caída y superación
-            constante. Entre lo íntimo y lo explosivo, construye un universo
-            donde el caos siempre empuja hacia adelante
+            José Luis Kang Vanni nacido en la ciudad de Asunción del Paraguay el
+            1 de agosto del 2001 es conocido con el seudónimo “Loui Kang”
+            actualmente radicado en Ushuaia/Argentina, donde el aislamiento y el
+            frío moldean su identidad sonora. Su música cruza emoción cruda,
+            noches intensas y una narrativa de caída y superación constante.
+            Entre lo íntimo y lo explosivo, construye un universo donde el caos
+            y las experiencias personales siempre empujan hacia adelante.
           </p>
         </div>
       </div>
