@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import SpotifyIcon from "./icons/SpotifyIcon";
 import YtMusicIcon from "./icons/YtMusicIcon";
 import { useScreen } from "../hooks/useScreen";
@@ -61,6 +61,12 @@ const NSD_Link_YTM: string =
 const dostresLink_YTM: string =
   "https://music.youtube.com/playlist?list=OLAK5uy_kJbYt0TnU1Y42jxBqFpl8h8zO-3xL0mNk&si=6uPk4i2WUWE9Wa1B";
 
+const releaseOptions = [
+  { value: Items.NEC, label: NEC_Title },
+  { value: Items.NSD, label: NSD_Title },
+  { value: Items.DOSTRES, label: DOSTRES_Title },
+];
+
 const Music = () => {
   const [selectedItem, setSelectedItem] = useState<Items>(Items.NEC);
 
@@ -69,6 +75,8 @@ const Music = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (item: Items) => {
+    if (item === selectedItem) return;
+
     setIsLoading(true);
     setSelectedItem(item);
   };
@@ -79,28 +87,26 @@ const Music = () => {
       >
         MUSIC
       </h2>
-      <div className="flex w-full  justify-center md:justify-end gap-x-8 md:gap-x-10 md:place-self-end ">
-        <button onClick={() => handleChange(Items.NEC)}>
-          <h3
-            className={`flex ${inter.className} scale-90  hover:scale-110 text-md 2xl:text-2xl cursor-pointer transition-all leading-relaxed  text-center  ${selectedItem != Items.NEC ? "text-gray-800 bg-gray-200  " : "text-[#0F1115] scale-120 drop-shadow-[0_0_8px_rgba(255,255,255,0.6)]  "}    p-1 rounded-md bg-gray-50 `}
+      <div
+        role="group"
+        aria-label="Lanzamientos musicales"
+        className={`${inter.className} mt-4 mb-2 grid w-full max-w-2xl grid-cols-3 gap-2 self-center rounded-xl border border-[#F2ECE2]/15 bg-[#F2ECE2]/3 p-1.5 md:self-end md:gap-3 md:p-2`}
+      >
+        {releaseOptions.map(({ value, label }) => (
+          <button
+            key={value}
+            type="button"
+            aria-pressed={selectedItem === value}
+            onClick={() => handleChange(value)}
+            className={`flex min-h-16 min-w-0 items-center justify-center rounded-lg border px-2 py-3 text-center text-xs leading-relaxed font-bold tracking-[0.06em] uppercase outline-[#F2ECE2] outline-offset-4 transition-colors duration-200 focus-visible:outline-2 motion-reduce:transition-none sm:px-4 sm:text-sm 2xl:text-base cursor-pointer ${
+              selectedItem === value
+                ? "border-[#F2ECE2] bg-[#F2ECE2] text-[#0F1115]"
+                : "border-[#F2ECE2]/20 bg-transparent text-[#F2ECE2]/75 hover:border-[#F2ECE2]/50 hover:bg-[#F2ECE2]/8 hover:text-[#F2ECE2]"
+            }`}
           >
-            NO ESTOY CUERDO
-          </h3>
-        </button>
-        <button onClick={() => handleChange(Items.NSD)}>
-          <h3
-            className={` flex ${inter.className} scale-90 hover:scale-110 text-md 2xl:text-2xl cursor-pointer transition-all leading-relaxed text-center ${selectedItem != Items.NSD ? "text-gray-800  bg-gray-200 " : "text-[#0F1115] scale-120 drop-shadow-[0_0_8px_rgba(255,255,255,0.2)]"}   p-1 rounded-md bg-gray-50 `}
-          >
-            NOCHES SIN DORMIR
-          </h3>
-        </button>
-        <button onClick={() => handleChange(Items.DOSTRES)}>
-          <h3
-            className={` flex ${inter.className} scale-90 hover:scale-110 px-2 text-2xl 2xl:text-3xl cursor-pointer transition-all leading-relaxed text-center ${selectedItem != Items.DOSTRES ? "text-gray-800 bg-gray-200 " : "text-[#0F1115] scale-120 drop-shadow-[0_0_8px_rgba(255,255,255,0.2)]"} px-1  rounded-md bg-gray-50 py-3 md:py-0 `}
-          >
-            #23
-          </h3>
-        </button>
+            {label}
+          </button>
+        ))}
       </div>
       <div className="flex flex-col md:flex-row  md:justify-between transition-opacity duration-500 animate-fade  min-h-[487.75px] md:min-h-[416px]">
         <div className="flex flex-col ">
