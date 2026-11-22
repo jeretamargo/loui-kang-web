@@ -22,7 +22,7 @@ La fuente de verdad es `REDESIGN.md`. Se conserva el header y se implementan los
 | 2 | Hero y loader | Lint sin errores y build correcto; efecto del video conservado, poster sin filtros, videoclip ausente mientras no se confirme. |
 | 3 | Music y CTA compartidos | 6 pruebas de datos/renderizado, lint sin errores y build correcto. Nuevo lanzamiento de prueba aparece en Hero y primer selector sin editar componentes. |
 | 4 | Bio y miniaturas | 7 pruebas, lint sin warnings y build correcto. Un H2, cuatro miniaturas y textos de la spec; sin tabla ni flechas. |
-| 5 | Social con embeds originales | Pendiente |
+| 5 | Social con embeds originales | 7 pruebas, lint sin warnings y build correcto. Se conservan iframe YouTube e InstagramEmbed, con URLs en datos y sin useScreen. Verificación real del proveedor al cierre. |
 | 6 | Footer, mobile y movimiento | Pendiente |
 
 Los archivos de la spec y los mockups ya estaban sin seguimiento al comenzar; no se incluyen automáticamente en los commits de implementación.
