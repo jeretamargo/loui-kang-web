@@ -1,7 +1,7 @@
 const Loader = () => {
   return (
     <div
-      className="hero-loader absolute bottom-12 inset-x-0 z-10 flex justify-center pointer-events-none"
+      className="hero-loader pointer-events-none absolute inset-x-0 top-1/2 z-10 flex -translate-y-1/2 justify-center"
       role="status"
       aria-live="polite"
     >

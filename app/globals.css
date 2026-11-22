@@ -36,6 +36,51 @@
   scroll-margin-top: 160px;
 }
 
+.hero-section {
+  position: relative;
+  display: flex;
+  min-height: clamp(640px, 60vw, 880px);
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.hero-content {
+  position: relative;
+  padding-top: 160px;
+  padding-bottom: 40px;
+}
+
+.hero-title {
+  margin-block: 20px 36px;
+  font-size: clamp(44px, 10.5vw, 156px);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+}
+
+.hero-release-copy {
+  max-width: 440px;
+  font-size: clamp(17px, 1.6vw, 20px);
+  line-height: 1.5;
+}
+
+.hero-scrim {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--color-ink) 45%, transparent) 0%,
+    color-mix(in srgb, var(--color-ink) 10%, transparent) 35%,
+    color-mix(in srgb, var(--color-ink) 75%, transparent) 72%,
+    var(--color-ink) 100%
+  );
+}
+
+.hero-glow {
+  left: -10%;
+  right: 30%;
+  bottom: -20%;
+  height: 70%;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--color-accent) 45%, transparent), transparent);
+}
+
 .embla__viewport {
   overflow: hidden;
 }

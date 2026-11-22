@@ -17,7 +17,7 @@ La fuente de verdad es `REDESIGN.md`. Se conserva el header y se implementan los
 | Paso | Alcance | Verificación |
 | --- | --- | --- |
 | 1 | Tokens, fuentes y datos tipados | `npm test` (4 pruebas), lint sin errores y build correcto; warning previo de Carousel pendiente del paso 4. |
-| 2 | Hero y loader | Pendiente |
+| 2 | Hero y loader | Lint sin errores y build correcto; efecto del video conservado, poster sin filtros, videoclip ausente mientras no se confirme. |
 | 3 | Music y CTA compartidos | Pendiente |
 | 4 | Bio y miniaturas | Pendiente |
 | 5 | Social con embeds originales | Pendiente |
