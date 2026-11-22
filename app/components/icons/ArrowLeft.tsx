@@ -6,7 +6,7 @@ const ArrowLeft = () => {
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
-        stroke="#F2ECE2"
+        stroke="var(--color-cream)"
         strokeWidth="2"
         className="w-8 h-8"
       >

@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
-import { Kanit, Inter } from "next/font/google";
+import { Syncopate, Inter } from "next/font/google";
 
 import "./globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
-  weight: ["400", "700"],
+  weight: ["400", "500", "600", "700"],
 });
 
-const kanit = Kanit({
+const syncopate = Syncopate({
   subsets: ["latin"],
-  variable: "--font-kanit",
-  weight: ["400", "700"],
+  variable: "--font-syncopate",
+  weight: ["700"],
 });
 
 export const metadata: Metadata = {
@@ -27,10 +27,10 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
-      className={`${kanit.variable} ${inter.variable}  h-full antialiased bg-[#0F1115] scroll-smooth `}
+      lang="es"
+      className={`${syncopate.variable} ${inter.variable} h-full bg-ink antialiased scroll-smooth`}
     >
-      <body className="">{children}</body>
+      <body className="font-sans text-cream">{children}</body>
     </html>
   );
 }
