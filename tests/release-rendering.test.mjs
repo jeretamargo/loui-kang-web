@@ -58,3 +58,21 @@ test("Bio has one numbered heading and a four-thumbnail gallery without arrows o
   assert.ok(!html.includes("Fotografía siguiente"));
   assert.ok(!html.includes("<table"));
 });
+
+test("Footer renders four fixed platform links as text and keeps the hero anchor", () => {
+  const html = render("Footer");
+  assert.equal((html.match(/target="_blank"/g) ?? []).length, 4);
+  assert.ok(html.includes('href="#hero"'));
+  assert.ok(html.includes("Todos los derechos reservados."));
+  assert.ok(!html.includes("<svg"));
+});
+
+test("Spotify's SSR loading state has a no-JavaScript fallback", () => {
+  const html = render("Music");
+  const iframe = html.match(/<iframe\b[^>]*>/)?.[0];
+  const fallback = html.match(/<noscript>([\s\S]*?)<\/noscript>/)?.[1];
+  assert.ok(iframe.includes("spotify-embed"));
+  assert.match(iframe, /height="352"/);
+  assert.match(fallback, /\.spotify-embed\s*\{\s*opacity:\s*1/);
+  assert.match(fallback, /\.spotify-loader\s*\{\s*display:\s*none/);
+});

@@ -13,7 +13,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter", weight: ["40
 
 export default function Music() {
   const [selectedId, setSelectedId] = useState(latestRelease.id);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const selectedRelease = releases.find(({ id }) => id === selectedId) ?? latestRelease;
 
   const handleChange = (id: string) => {
@@ -23,7 +23,7 @@ export default function Music() {
   };
 
   return (
-    <section id="music" className="redesign-section bg-ink-2" aria-labelledby="music-heading">
+    <section id="music" className="redesign-section bg-ink-2" aria-labelledby="music-heading" data-reveal>
       <div className="redesign-container">
         <SectionHeading number="02" title="MUSIC" id="music-heading" />
         <div className="flex flex-wrap items-center gap-[clamp(40px,5vw,80px)]">
@@ -76,14 +76,17 @@ export default function Music() {
                 height="352"
                 allowFullScreen
                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                className={`block h-88 w-full rounded-xl ${isLoading ? "opacity-0" : "opacity-100"}`}
+                className={`spotify-embed block h-88 w-full rounded-xl ${isLoading ? "opacity-0" : "opacity-100"}`}
               />
               {isLoading && (
-                <div className="absolute inset-0 grid place-items-center bg-surface" role="status">
+                <div className="spotify-loader absolute inset-0 grid place-items-center bg-surface" role="status">
                   <span className="sr-only">Cargando reproductor de Spotify…</span>
                   <span className="size-12 animate-spin rounded-full border-4 border-cream/20 border-t-cream motion-reduce:animate-none" aria-hidden="true" />
                 </div>
               )}
+              <noscript>
+                <style>{`.spotify-embed { opacity: 1; } .spotify-loader { display: none; }`}</style>
+              </noscript>
             </div>
             <p className="mt-3 text-xs text-muted">Reproductor oficial de Spotify.</p>
           </div>

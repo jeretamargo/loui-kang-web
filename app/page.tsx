@@ -30,6 +30,19 @@ export default function Home() {
     };
   }, []);
 
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        entry.target.classList.add("section-revealed");
+        observer.unobserve(entry.target);
+      }
+    }, { threshold: 0.12 });
+    document.querySelectorAll("[data-reveal]").forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (

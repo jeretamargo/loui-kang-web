@@ -3,7 +3,7 @@ import SectionHeading from "./SectionHeading";
 
 export default function Bio() {
   return (
-    <section id="bio" className="redesign-section" aria-labelledby="bio-heading">
+    <section id="bio" className="redesign-section" aria-labelledby="bio-heading" data-reveal>
       <div className="redesign-container">
         <SectionHeading number="01" title="BIO" id="bio-heading" />
         <div className="flex flex-wrap items-start gap-[clamp(32px,6vw,88px)]">

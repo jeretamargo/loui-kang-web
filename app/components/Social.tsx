@@ -39,7 +39,7 @@ function EmbedCard({ platform, kind, href, icon, children }: EmbedCardProps) {
 
 export default function Social() {
   return (
-    <section id="social" className="redesign-section" aria-labelledby="social-heading">
+    <section id="social" className="redesign-section" aria-labelledby="social-heading" data-reveal>
       <div className="redesign-container">
         <SectionHeading number="03" title="SOCIAL" id="social-heading" />
         <div className="flex flex-wrap items-stretch gap-6">

@@ -15,14 +15,14 @@ npm run dev
 
 Abrir [http://localhost:3000](http://localhost:3000).
 
-La aplicación actual no requiere variables de entorno, claves de API, base de datos ni CMS. El contenido del artista y las URL de las plataformas se mantienen directamente en los componentes.
+La aplicación actual no requiere variables de entorno, claves de API, base de datos ni CMS. Los lanzamientos y los enlaces se mantienen en `app/data/`; la biografía se edita en su componente.
 
 ## Secciones del sitio
 
 | Sección | Contenido |
 | --- | --- |
 | Hero | Video de fondo en bucle, nombre del artista y fotografía de respaldo. |
-| Bio | Biografía del artista y carrusel de fotografías con avance automático. |
+| Bio | Biografía del artista y galería de fotografías con miniaturas, sin avance automático. |
 | Music | Selección de lanzamientos con reproductor de Spotify y enlaces a Spotify y YouTube Music. |
 | Social | Publicación de Instagram y video de YouTube integrados, con enlaces a los perfiles. |
 | Navegación y pie de página | Enlaces a las secciones, menú móvil y accesos a plataformas musicales y redes sociales. |
@@ -35,6 +35,7 @@ Los lanzamientos destacados actualmente son **No estoy cuerdo**, **Noches sin Do
 | --- | --- |
 | `npm run dev` | Iniciar el servidor de desarrollo. |
 | `npm run lint` | Ejecutar ESLint. |
+| `npm test` | Verificar datos, renderizado y contratos del rediseño con el runner de Node.js. |
 | `npx tsc --noEmit --incremental false` | Verificar los tipos de TypeScript sin generar archivos ni actualizar la caché incremental. |
 | `npm run build` | Compilar la aplicación para producción. |
 | `npm run start` | Servir una compilación de producción existente. |
@@ -46,7 +47,7 @@ npm run build
 npm run start
 ```
 
-Actualmente el repositorio no incluye una suite de pruebas automatizadas ni un script `npm test`. Se recomienda realizar las verificaciones manuales descritas más abajo, además de ejecutar ESLint, TypeScript y la compilación de producción.
+Las pruebas automatizadas usan dependencias ya instaladas, sin servicios externos. No reemplazan las verificaciones manuales de los embeds y del diseño responsive descritas más abajo.
 
 ## Estructura del proyecto
 
@@ -55,13 +56,18 @@ app/
 ├── layout.tsx             # Layout principal, fuentes y metadatos
 ├── page.tsx               # Composición de la página y estado de navegación
 ├── globals.css            # Entrada de Tailwind y estilos del carrusel y loader
+├── data/
+│   ├── releases.ts         # Lanzamientos, metadatos, URLs y último lanzamiento
+│   └── links.ts            # Perfiles del artista y contenidos de Social
 ├── components/
 │   ├── Hero.tsx           # Ciclo de carga del video y fotografía de respaldo
 │   ├── Loader.tsx         # Indicador de carga del video, no bloqueante
 │   ├── Navbar.tsx         # Navegación fija y respuesta a la visibilidad del hero
 │   ├── BurguerMenu.tsx    # Menú de navegación móvil superpuesto
 │   ├── Bio.tsx            # Contenido de la biografía
-│   ├── Carousel.tsx       # Carrusel de fotografías con Embla
+│   ├── Carousel.tsx       # Galería con selección por miniaturas
+│   ├── PlatformButton.tsx # CTA compartido por Music y Social
+│   ├── SectionHeading.tsx # Encabezado numerado de sección
 │   ├── Music.tsx          # Selección de lanzamientos y enlaces musicales
 │   ├── Social.tsx         # Contenido de Instagram y YouTube
 │   ├── Footer.tsx         # Identidad del artista y enlaces a plataformas
@@ -79,7 +85,7 @@ public/
 - **Next.js 16.2.2**, con App Router, y **React 19.2.4**.
 - **TypeScript 5**, con verificación estricta de tipos.
 - **Tailwind CSS 4**, integrado mediante PostCSS.
-- **Embla Carousel**, con su plugin de avance automático.
+- Galería con estado local de React y **next/image**; Embla permanece instalado, pero no se usa en la galería actual.
 - **react-social-media-embed**, para integrar Instagram mediante renderizado en el cliente.
 - **next/font/google**, para las fuentes tipográficas configuradas.
 
@@ -89,14 +95,17 @@ public/
 | --- | --- |
 | Biografía del artista | `app/components/Bio.tsx` |
 | Carrusel de fotografías | Archivos en `public/images/` y diapositivas en `app/components/Carousel.tsx` |
-| Títulos, descripciones y URL de los reproductores | Constantes y lógica de selección y renderizado en `app/components/Music.tsx` |
-| Publicación de Instagram y video de YouTube | URL de los contenidos integrados en `app/components/Social.tsx` |
-| Enlaces a perfiles del artista | `Navbar.tsx`, `Footer.tsx` y `Social.tsx`; los enlaces de los lanzamientos están en `Music.tsx` |
+| Títulos, tipo, año, videoclip y URL de los lanzamientos | `app/data/releases.ts`; el primer objeto es `latestRelease` y se muestra en Hero y Music |
+| Publicación de Instagram y video de YouTube | `socialContent` en `app/data/links.ts` |
+| Enlaces a perfiles del artista | `artistLinks` en `app/data/links.ts`; el header conserva sus enlaces originales por restricción del rediseño |
+| Colores, fuentes y espaciados compartidos | Tokens `@theme` y estilos en `app/globals.css` |
 | Título y descripción de la página | `metadata` en `app/layout.tsx` |
 | Video del hero | `public/videos/hero.webm` y su fuente en `app/components/Hero.tsx` |
 | Fotografía de respaldo del hero | Rutas del fondo y de `poster` en `app/components/Hero.tsx` |
 
 El hero reutiliza `public/images/slide3.webp` como respaldo. Reemplazar esa imagen también modifica su diapositiva en el carrusel. Es importante considerar ambos usos o configurar una imagen independiente para el hero.
+
+Tipo, año, videoclip del último lanzamiento y orden real siguen pendientes de confirmación en los TODO de `releases.ts`. La UI omite los datos faltantes. Al agregar lanzamientos, el selector crea filas de hasta tres columnas.
 
 ## Funcionamiento de la carga del hero
 

@@ -63,6 +63,7 @@ const Hero = ({ heroRef }: HeroProps) => {
       className="hero-section bg-ink bg-cover bg-[center_30%]"
       style={{ backgroundImage: "url('/images/slide3.webp')" }}
       id="hero"
+      data-reveal
       ref={heroRef}
     >
       <video

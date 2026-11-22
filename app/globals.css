@@ -46,6 +46,21 @@
   gap: 14px;
 }
 
+.section-revealed {
+  animation: section-fade-up 400ms ease-out both;
+}
+
+@keyframes section-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .hero-section {
   position: relative;
   display: flex;
@@ -150,6 +165,10 @@ html {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  .section-revealed { animation: none; }
+
   .loader:before {
     animation: none;
   }
