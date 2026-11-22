@@ -1,54 +1,31 @@
-import React from "react";
 import Carousel from "./Carousel";
-import { Syncopate, Inter } from "next/font/google";
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  weight: ["400", "700"],
-});
+import SectionHeading from "./SectionHeading";
 
-const syncopate = Syncopate({
-  subsets: ["latin"],
-  variable: "--font-kanit",
-  weight: ["700"],
-});
-
-const Bio = () => {
+export default function Bio() {
   return (
-    <section
-      className="flex flex-col lg:flex-row px-6 md:px-12 lg:px-12 py-15   items-center gap-5 place-content-start 2xl:gap-60"
-      id="bio"
-    >
-      <h2
-        className={` ${syncopate.className} text-6xl 2xl:text-7xl flex lg:hidden  leading-relaxed  text-[#F2ECE2] self-start `}
-      >
-        BIO
-      </h2>
-      <div className=" flex">
-        <Carousel></Carousel>
-      </div>
-      <div className="flex flex-col  text-[#F2ECE2] justify-center max-w-125 order-3 2xl:gap-10">
-        <div className="flex flex-wrap ">
-          <h2
-            className={` ${syncopate.className} text-7xl  hidden lg:block  leading-relaxed  text-[#F2ECE2] `}
-          >
-            BIO
-          </h2>
-          <p
-            className={` ${inter.className}  text-center lg:text-left lg:text-2xl text-xl   leading-relaxed flex flex-wrap`}
-          >
-            José Luis Kang Vanni nacido en la ciudad de Asunción del Paraguay el
-            1 de agosto del 2001 es conocido con el seudónimo “Loui Kang”
-            actualmente radicado en Ushuaia/Argentina, donde el aislamiento y el
-            frío moldean su identidad sonora. Su música cruza emoción cruda,
-            noches intensas y una narrativa de caída y superación constante.
-            Entre lo íntimo y lo explosivo, construye un universo donde el caos
-            y las experiencias personales siempre empujan hacia adelante.
-          </p>
+    <section id="bio" className="redesign-section" aria-labelledby="bio-heading">
+      <div className="redesign-container">
+        <SectionHeading number="01" title="BIO" id="bio-heading" />
+        <div className="flex flex-wrap items-start gap-[clamp(32px,6vw,88px)]">
+          <div className="min-w-0 flex-[1_1_380px]">
+            <Carousel />
+          </div>
+          <div className="min-w-0 flex-[1_1_440px]">
+            <p className="mb-8 text-[clamp(26px,2.7vw,40px)] leading-[1.18] font-semibold tracking-[-0.015em]">
+              Desde Ushuaia, donde el aislamiento y el frío moldean su{" "}
+              <span className="text-accent-light">identidad sonora</span>.
+            </p>
+            <p className="mb-[18px] max-w-[60ch] text-lg leading-[1.7] text-muted-2">
+              José Luis Kang Vanni —“Loui Kang”— nació en Asunción del Paraguay el 1 de agosto de 2001.
+              Su música cruza emoción cruda, noches intensas y una narrativa de caída y superación constante.
+            </p>
+            <p className="max-w-[60ch] text-lg leading-[1.7] text-muted-2">
+              Entre lo íntimo y lo explosivo, construye un universo donde el caos y las experiencias
+              personales siempre empujan hacia adelante.
+            </p>
+          </div>
         </div>
       </div>
     </section>
   );
-};
-
-export default Bio;
+}

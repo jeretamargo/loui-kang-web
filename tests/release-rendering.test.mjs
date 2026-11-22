@@ -48,3 +48,13 @@ test("prepending a data-only release features it in Hero and the first selected 
   assert.match(music, /repeat\(3, minmax\(0, 1fr\)\)/);
   assert.equal((music.match(/<button /g) ?? []).length, 4);
 });
+
+test("Bio has one numbered heading and a four-thumbnail gallery without arrows or data table", () => {
+  const html = render("Bio");
+  assert.equal((html.match(/<h2 /g) ?? []).length, 1);
+  assert.equal((html.match(/aria-label="Ver foto /g) ?? []).length, 4);
+  assert.ok(html.includes('alt="Loui Kang bajo un puente, remera negra"'));
+  assert.ok(html.includes("identidad sonora"));
+  assert.ok(!html.includes("Fotografía siguiente"));
+  assert.ok(!html.includes("<table"));
+});
