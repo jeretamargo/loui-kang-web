@@ -7,12 +7,10 @@ import Bio from "./components/Bio";
 import Music from "./components/Music";
 import Social from "./components/Social";
 import Footer from "./components/Footer";
-import Loader from "./components/Loader";
 
 export default function Home() {
   const heroRef = useRef<HTMLDivElement | null>(null);
   const [isHeroVisible, setIsHeroVisible] = useState(true);
-  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -22,39 +20,50 @@ export default function Home() {
       { threshold: 0.3 },
     );
 
-    if (heroRef.current) {
-      observer.observe(heroRef.current);
+    const hero = heroRef.current;
+    if (hero) {
+      observer.observe(hero);
     }
 
     return () => {
-      if (heroRef.current) observer.unobserve(heroRef.current);
+      observer.disconnect();
     };
+  }, []);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        entry.target.classList.add("section-revealed");
+        observer.unobserve(entry.target);
+      }
+    }, { threshold: 0.12 });
+    document.querySelectorAll("[data-reveal]").forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
   }, []);
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
     <div>
-      {!isVideoLoaded && <Loader />}
-      <div className={`${!isVideoLoaded ? "opacity-0" : "opacity-100"}`}>
-        <header>
-          <Navbar
-            open={isOpen}
-            setOpen={setIsOpen}
-            isHeroVisible={isHeroVisible}
-          ></Navbar>
-        </header>
-        <main>
-          <Hero heroRef={heroRef} setIsVideoLoaded={setIsVideoLoaded}></Hero>
-          <Bio></Bio>
-          <Music></Music>
-          <Social></Social>
-        </main>
-        <footer>
-          <Footer></Footer>
-        </footer>
-        <BurguerMenu open={isOpen} setOpen={setIsOpen}></BurguerMenu>
-      </div>
+      <header>
+        <Navbar
+          open={isOpen}
+          setOpen={setIsOpen}
+          isHeroVisible={isHeroVisible}
+        ></Navbar>
+      </header>
+      <main>
+        <Hero heroRef={heroRef}></Hero>
+        <Bio></Bio>
+        <Music></Music>
+        <Social></Social>
+      </main>
+      <footer>
+        <Footer></Footer>
+      </footer>
+      <BurguerMenu open={isOpen} setOpen={setIsOpen}></BurguerMenu>
     </div>
   );
 }

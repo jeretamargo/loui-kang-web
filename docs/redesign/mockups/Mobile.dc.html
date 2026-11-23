@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Loui Kang — Mobile</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Syncopate:wght@400;700&amp;display=swap">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 390px; min-height: 5800px; background: #0A0A0A">
+  <dc-import name="Main" accent="{{accent}}" accent-light="{{accentLight}}" hint-size="390px,5800px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#54457F","options":["#54457F","#4A3F6B","#5E4B8B","#6B5A9A"]},"accentLight":{"editor":"color","default":"#B3A6D9","options":["#B3A6D9","#C2B8E0","#A597CF","#F2ECE2"]},"$preview":{"width":390,"height":5800}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return { accent: this.props.accent ?? "#54457F", accentLight: this.props.accentLight ?? "#B3A6D9" };
+  }
+}
+</script>
+</body>
+</html>

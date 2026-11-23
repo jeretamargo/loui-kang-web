@@ -1,80 +1,46 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
-import React, { useEffect } from "react";
+
+import { useState } from "react";
 import Image from "next/image";
-import useEmblaCarousel from "embla-carousel-react";
-import ArrowLeft from "./icons/ArrowLeft";
-import ArrowRight from "./icons/ArrowRight";
-import Autoplay from "embla-carousel-autoplay";
 
-const Carousel = () => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false }, [Autoplay()]);
-  const scrollPrev = () => emblaApi?.scrollPrev();
-  const scrollNext = () => emblaApi?.scrollNext();
+const photos = [
+  { src: "/images/slide1.webp", alt: "Loui Kang bajo un puente, remera negra" },
+  { src: "/images/slide2.webp", alt: "Loui Kang frente a una torre de alta tensión" },
+  { src: "/images/slide3.webp", alt: "Loui Kang de noche, con capucha" },
+  { src: "/images/slide4.webp", alt: "Loui Kang grabando en el estudio" },
+];
 
-  useEffect(() => {
-    if (!emblaApi) return;
-    emblaApi.plugins().autoplay?.play();
-  }, [emblaApi]);
+export default function Carousel() {
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const selectedPhoto = photos[selectedIndex];
 
   return (
-    <div>
-      <div className="embla relative ">
-        <button
-          className=" cursor-pointer embla__prev absolute left-2 top-1/2 -translate-y-1/2 z-5 bg-white/10 backdrop-blur-md rounded-full p-2 hover:bg-white/20 transition hover:scale-105"
-          onClick={scrollPrev}
-        >
-          <ArrowLeft></ArrowLeft>
-        </button>
-        <button
-          className=" cursor-pointer embla__next absolute right-2 top-1/2 -translate-y-1/2 z-5 bg-white/10 backdrop-blur-md rounded-full p-2 hover:bg-white/20 transition hover:scale-105"
-          onClick={scrollNext}
-        >
-          <ArrowRight></ArrowRight>
-        </button>
-        <div className="embla__viewport relative" ref={emblaRef}>
-          <div className="embla__container w-90 h-90 md:w-115 md:h-115 lg:w-150 lg:h-150 ">
-            <div className="embla__slide  ">
-              <img
-                src="/images/slide1.webp"
-                className="w-full h-full object-cover"
-                alt="loui kang"
-                loading="lazy"
-                decoding="async"
-              ></img>
-            </div>
-            <div className="embla__slide w-full ">
-              <img
-                src="/images/slide3.webp"
-                className="w-full h-full object-cover"
-                alt="loui kang"
-                loading="lazy"
-                decoding="async"
-              ></img>
-            </div>
-            <div className="embla__slide w-full ">
-              <img
-                src="/images/slide2.webp"
-                className="w-full h-full object-cover"
-                alt="loui kang"
-                loading="lazy"
-                decoding="async"
-              ></img>
-            </div>
-            <div className="embla__slide w-full">
-              <img
-                src="/images/slide4.webp"
-                className="w-full h-full object-cover"
-                alt="loui kang"
-                loading="lazy"
-                decoding="async"
-              ></img>{" "}
-            </div>
-          </div>
-        </div>
+    <div role="region" aria-label="Fotografías de Loui Kang">
+      <div className="relative aspect-4/5 overflow-hidden rounded-md bg-surface" aria-live="polite">
+        <Image
+          src={selectedPhoto.src}
+          alt={selectedPhoto.alt}
+          fill
+          sizes="(max-width: 959px) 100vw, (max-width: 1279px) 45vw, 520px"
+          className="object-cover"
+        />
+      </div>
+      <div className="mt-3 grid grid-cols-4 gap-2.5">
+        {photos.map(({ src }, index) => (
+          <button
+            key={src}
+            type="button"
+            aria-label={`Ver foto ${index + 1}`}
+            aria-pressed={selectedIndex === index}
+            onClick={() => setSelectedIndex(index)}
+            className={`cursor-pointer rounded-[5px] border p-0.5 transition-opacity hover:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cream motion-reduce:transition-none ${selectedIndex === index ? "border-accent-light opacity-100" : "border-transparent opacity-55"}`}
+          >
+            <span className="relative block aspect-square overflow-hidden rounded-[3px]">
+              <Image src={src} alt="" fill sizes="(max-width: 959px) 25vw, 130px" className="object-cover" />
+            </span>
+          </button>
+        ))}
       </div>
     </div>
   );
-};
-
-export default Carousel;
+}

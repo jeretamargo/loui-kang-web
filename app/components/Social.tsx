@@ -1,91 +1,77 @@
 "use client";
-import React from "react";
 
-import { Syncopate, Inter } from "next/font/google";
+import type { ReactNode } from "react";
+import dynamic from "next/dynamic";
 import InstagramIcon from "./icons/InstagramIcon";
 import YouTubeIcon from "./icons/YouTubeIcon";
-
-import dynamic from "next/dynamic";
-import { useScreen } from "../hooks/useScreen";
+import PlatformButton from "./PlatformButton";
+import SectionHeading from "./SectionHeading";
+import { artistLinks, socialContent } from "../data/links";
 
 const InstagramEmbed = dynamic(
   () => import("react-social-media-embed").then((mod) => mod.InstagramEmbed),
   { ssr: false },
 );
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  weight: ["400", "700"],
-});
+type EmbedCardProps = {
+  platform: string;
+  kind: string;
+  href: string;
+  icon: ReactNode;
+  children: ReactNode;
+};
 
-const syncopate = Syncopate({
-  subsets: ["latin"],
-  variable: "--font-kanit",
-  weight: ["700"],
-});
-
-const Social = () => {
-  const width = useScreen();
+function EmbedCard({ platform, kind, href, icon, children }: EmbedCardProps) {
   return (
-    <section
-      className="flex flex-col   px-6 md:px-12 lg:px-15 py-15"
-      id="social"
-    >
-      <h2
-        className={` ${syncopate.className} text-6xl 2xl:text-7xl flex   leading-relaxed  text-[#F2ECE2]  `}
-      >
-        SOCIAL
-      </h2>
-      <div className="flex flex-col lg:flex-row items-center gap-5 md:justify-evenly">
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <InstagramEmbed
-            url="https://www.instagram.com/p/DKOD-neA7iZ/"
-            width={328}
-          />
-        </div>
-        <iframe
-          width={width < 768 ? "350" : "800"}
-          height={width < 768 ? "280" : "450"}
-          src="https://www.youtube.com/embed/bugNrXoYDjI?si=YtLRaJbQjogb3YeN&amp;start=6"
-          title="YouTube video player"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerPolicy="strict-origin-when-cross-origin"
-          allowFullScreen
-        ></iframe>
+    <article className="min-w-0 rounded-xl border border-cream/8 bg-surface p-3">
+      <div className="flex flex-wrap items-center gap-2.5 px-1.5 pt-1.5 pb-3.5">
+        <span className="size-[22px] shrink-0" aria-hidden="true">{icon}</span>
+        <span className="text-xs font-semibold tracking-[0.18em] uppercase">{platform}</span>
+        <span className="text-[13px] text-muted">· {kind}</span>
+        <a href={href} target="_blank" rel="noopener noreferrer" className="ml-auto whitespace-nowrap text-[13px] font-medium focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cream" aria-label={`Abrir ${platform} en otra pestaña`}>
+          Abrir ↗
+        </a>
       </div>
-      <div className="flex flex-col">
-        <p
-          className={`${inter.className} text-2xl md:text-3xl self-center flex mt-8 leading-relaxed text-center text-[#F2ECE2] `}
-        >
-          {" "}
-          Sigue a Loui Kang{" "}
-        </p>
-        <div className=" flex w-full justify-evenly mt-4">
-          <div className="flex flex-col items-center transition cursor-pointer hover:scale-110 hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.2)]">
-            <a href="https://www.instagram.com/louikang_/" target="_blank">
-              <InstagramIcon className="w-10  md:w-15 2xl:w-20 inline-block  transition cursor-pointer hover:scale-110 hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.2)] "></InstagramIcon>
-            </a>
-            <p
-              className={`${inter.className} text-xl 2xl:text-3xl  flex  leading-relaxed text-center text-[#F2ECE2] `}
-            >
-              Instagram
-            </p>
+      <div className="overflow-hidden rounded-lg">{children}</div>
+    </article>
+  );
+}
+
+export default function Social() {
+  return (
+    <section id="social" className="redesign-section" aria-labelledby="social-heading" data-reveal>
+      <div className="redesign-container">
+        <SectionHeading number="03" title="SOCIAL" id="social-heading" />
+        <div className="social-layout">
+          <div className="social-video min-w-0">
+            <EmbedCard platform="YouTube" kind="Último video" href={socialContent.youtubeVideo} icon={<YouTubeIcon className="size-[22px]" />}>
+              <iframe
+                src={socialContent.youtubeEmbed}
+                title="YouTube video player"
+                className="block aspect-video h-auto w-full rounded-lg bg-ink"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
+            </EmbedCard>
           </div>
-          <div className="flex flex-col items-center transition cursor-pointer hover:scale-110 hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.2)]">
-            <a href="https://www.youtube.com/@LouiKng" target="_blank">
-              <YouTubeIcon className="w-10  md:w-15  2xl:w-20 inline-block  transition cursor-pointer hover:scale-110 hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.2)]"></YouTubeIcon>
-            </a>
-            <p
-              className={`${inter.className} text-xl 2xl:text-3xl  flex  leading-relaxed text-center text-[#F2ECE2] `}
-            >
-              YouTube
-            </p>
+          <div className="social-instagram min-w-0 max-w-full [&>article]:h-full">
+            <EmbedCard platform="Instagram" kind="Último post" href={socialContent.instagramPost} icon={<InstagramIcon className="size-[22px]" />}>
+              <InstagramEmbed url={socialContent.instagramPost} width="100%" linkText="Ver publicación en Instagram" />
+            </EmbedCard>
+          </div>
+          <div className="social-follow flex min-w-0 flex-wrap items-center justify-between gap-5 rounded-xl border border-cream/12 p-[clamp(20px,3vw,32px)]">
+            <div className="min-w-0">
+              <h3 className="font-display text-[clamp(20px,2.2vw,28px)] leading-[1.1] font-bold">SEGUÍ A LOUI KANG</h3>
+              <p className="mt-2 text-[15px] text-muted-2">Lanzamientos, videos y lo que pasa en el estudio.</p>
+            </div>
+            <div className="platform-grid w-full">
+              <PlatformButton href={artistLinks.instagram} icon={<InstagramIcon className="size-7.5" />} label="Instagram" />
+              <PlatformButton href={artistLinks.youtube} icon={<YouTubeIcon className="size-7.5" />} label="YouTube" />
+            </div>
           </div>
         </div>
       </div>
     </section>
   );
-};
-
-export default Social;
+}

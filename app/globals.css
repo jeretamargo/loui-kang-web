@@ -1,5 +1,171 @@
 @import "tailwindcss";
 
+@theme {
+  --color-ink: #0a0a0a;
+  --color-ink-2: #111111;
+  --color-surface: #161616;
+  --color-cream: #f2ece2;
+  --color-muted: #a9a49b;
+  --color-muted-2: #c9c3b9;
+  --color-meta: #8e897f;
+  --color-accent: #54457f;
+  --color-accent-light: #b3a6d9;
+  --color-selector-ink: #0f1115;
+  --color-shadow: #000000;
+  --color-loader-white: #ffffff;
+  --color-loader-light: #dcdcdc;
+  --color-loader-mid: #aaaaaa;
+  --shadow-platform: 0 12px 32px color-mix(in srgb, var(--color-shadow) 35%, transparent);
+  --shadow-player: 0 24px 60px color-mix(in srgb, var(--color-shadow) 35%, transparent);
+  --shadow-release-glow:
+    0 0 0 3px color-mix(in srgb, var(--color-accent) 25%, transparent),
+    0 0 14px color-mix(in srgb, var(--color-accent-light) 90%, transparent),
+    0 0 32px color-mix(in srgb, var(--color-accent) 85%, transparent),
+    0 0 52px color-mix(in srgb, var(--color-accent) 50%, transparent);
+  --shadow-cta-glow: var(--shadow-platform), 0 0 20px color-mix(in srgb, var(--color-accent) 55%, transparent), 0 0 48px color-mix(in srgb, var(--color-accent) 30%, transparent);
+  --text-shadow-number-glow: 0 0 10px color-mix(in srgb, var(--color-accent-light) 65%, transparent), 0 0 24px color-mix(in srgb, var(--color-accent-light) 35%, transparent);
+}
+
+@theme inline {
+  --font-sans: var(--font-inter), sans-serif;
+  --font-display: var(--font-syncopate), sans-serif;
+}
+
+.redesign-container {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: clamp(16px, 4vw, 48px);
+}
+
+.redesign-section {
+  padding-block: clamp(80px, 10vw, 140px);
+  scroll-margin-top: 160px;
+}
+
+.section-heading {
+  margin-bottom: clamp(40px, 5vw, 64px);
+}
+
+.number-glow {
+  text-shadow: var(--text-shadow-number-glow);
+}
+
+@media (hover: hover) {
+  .cta-glow:hover {
+    box-shadow: var(--shadow-cta-glow);
+  }
+}
+
+.music-layout {
+  --music-gap: clamp(40px, 5vw, 80px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: "info" "embed" "actions";
+  gap: var(--music-gap);
+}
+
+.music-info { grid-area: info; }
+.music-embed { grid-area: embed; }
+.music-actions { grid-area: actions; }
+
+.social-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: "video" "instagram" "follow";
+  gap: 24px;
+}
+
+.social-video { grid-area: video; }
+.social-instagram { grid-area: instagram; }
+.social-follow { grid-area: follow; }
+
+@media (min-width: 1024px) {
+  .music-layout {
+    /* Preserve the previous 460px/420px flex bases and equal growth. */
+    grid-template-columns: minmax(0, calc((100% - var(--music-gap)) / 2 + 20px)) minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    grid-template-areas: "info embed" "actions embed";
+    row-gap: 0;
+  }
+
+  .music-embed { align-self: center; }
+
+  .social-layout {
+    /* Preserve the previous 520px/340px bases with 2:1 growth. */
+    grid-template-columns: minmax(0, calc((100% - 24px) * 2 / 3 - 160px / 3)) minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    grid-template-areas: "video instagram" "follow instagram";
+  }
+}
+
+.platform-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+  gap: 14px;
+}
+
+.section-revealed {
+  animation: section-fade-up 400ms ease-out both;
+}
+
+@keyframes section-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-section {
+  position: relative;
+  display: flex;
+  min-height: 100vh;
+  min-height: 100dvh;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.hero-content {
+  position: relative;
+  padding-top: clamp(124px, 16vh, 160px);
+  padding-bottom: 40px;
+}
+
+.hero-title {
+  margin-block: 20px 24px;
+  font-size: clamp(44px, 10.5vw, 156px);
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+}
+
+.hero-release-copy {
+  max-width: 440px;
+  font-size: clamp(17px, 1.6vw, 20px);
+  line-height: 1.5;
+}
+
+.hero-scrim {
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--color-ink) 45%, transparent) 0%,
+    color-mix(in srgb, var(--color-ink) 10%, transparent) 35%,
+    color-mix(in srgb, var(--color-ink) 75%, transparent) 72%,
+    var(--color-ink) 100%
+  );
+}
+
+.hero-glow {
+  left: -10%;
+  right: 30%;
+  bottom: -20%;
+  height: 70%;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--color-accent) 45%, transparent), transparent);
+}
+
 .embla__viewport {
   overflow: hidden;
 }
@@ -22,10 +188,10 @@ html {
   height: 100px;
   background: linear-gradient(
     165deg,
-    rgba(255, 255, 255, 1) 0%,
-    rgb(220, 220, 220) 40%,
-    rgb(170, 170, 170) 98%,
-    rgb(10, 10, 10) 100%
+    var(--color-loader-white) 0%,
+    var(--color-loader-light) 40%,
+    var(--color-loader-mid) 98%,
+    var(--color-ink) 100%
   );
   border-radius: 50%;
   position: relative;
@@ -37,17 +203,17 @@ html {
   width: 100%;
   height: 100%;
   border-radius: 100%;
-  border-bottom: 0 solid #ffffff05;
+  border-bottom: 0 solid color-mix(in srgb, var(--color-loader-white) 2%, transparent);
   box-shadow:
-    0 -10px 20px 20px #ffffff40 inset,
-    0 -5px 15px 10px #ffffff50 inset,
-    0 -2px 5px #ffffff80 inset,
-    0 -3px 2px #ffffffbb inset,
-    0 2px 0px #ffffff,
-    0 2px 3px #ffffff,
-    0 5px 5px #ffffff90,
-    0 10px 15px #ffffff60,
-    0 10px 20px 20px #ffffff40;
+    0 -10px 20px 20px color-mix(in srgb, var(--color-loader-white) 25%, transparent) inset,
+    0 -5px 15px 10px color-mix(in srgb, var(--color-loader-white) 31%, transparent) inset,
+    0 -2px 5px color-mix(in srgb, var(--color-loader-white) 50%, transparent) inset,
+    0 -3px 2px color-mix(in srgb, var(--color-loader-white) 73%, transparent) inset,
+    0 2px 0px var(--color-loader-white),
+    0 2px 3px var(--color-loader-white),
+    0 5px 5px color-mix(in srgb, var(--color-loader-white) 56%, transparent),
+    0 10px 15px color-mix(in srgb, var(--color-loader-white) 38%, transparent),
+    0 10px 20px 20px color-mix(in srgb, var(--color-loader-white) 25%, transparent);
   filter: blur(3px);
   animation: 1s rotate linear infinite;
 }
@@ -55,5 +221,15 @@ html {
 @keyframes rotate {
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  .section-revealed { animation: none; }
+
+  .loader:before {
+    animation: none;
   }
 }
