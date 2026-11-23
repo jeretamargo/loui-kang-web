@@ -10,7 +10,10 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const data = componentLoader()(path.join(root, "app/data/releases.ts"));
 
 function render(name, override = data) {
-  const load = componentLoader({ "../data/releases": override });
+  const load = componentLoader({
+    "../data/releases": override,
+    "next/dynamic": () => () => createElement("div", { "data-embed-fixture": "instagram" }),
+  });
   const Component = load(path.join(root, `app/components/${name}.tsx`)).default;
   return renderToStaticMarkup(createElement(Component, { heroRef: { current: null } }));
 }
@@ -75,4 +78,24 @@ test("Spotify's SSR loading state has a no-JavaScript fallback", () => {
   assert.match(iframe, /height="352"/);
   assert.match(fallback, /\.spotify-embed\s*\{\s*opacity:\s*1/);
   assert.match(fallback, /\.spotify-loader\s*\{\s*display:\s*none/);
+});
+
+test("Hero announces the latest release after the artist heading", () => {
+  const html = render("Hero");
+  assert.ok(html.indexOf("</h1>") < html.indexOf("Nuevo lanzamiento"));
+  assert.ok(html.includes("shadow-release-glow"));
+});
+
+test("Music DOM puts the player before its single CTA group", () => {
+  const html = render("Music");
+  assert.ok(html.indexOf('class="music-info') < html.indexOf('class="music-embed'));
+  assert.ok(html.indexOf('class="music-embed') < html.indexOf('class="music-actions'));
+  assert.equal((html.match(/class="platform-button /g) ?? []).length, 2);
+});
+
+test("Social DOM puts both embeds before its single follow/CTA group", () => {
+  const html = render("Social");
+  assert.ok(html.indexOf('class="social-video') < html.indexOf('class="social-instagram'));
+  assert.ok(html.indexOf('class="social-instagram') < html.indexOf('class="social-follow'));
+  assert.equal((html.match(/class="platform-button /g) ?? []).length, 2);
 });

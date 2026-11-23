@@ -30,7 +30,7 @@ La fuente de verdad es `REDESIGN.md`. Se conserva el header y se implementan los
 
 Los archivos de la spec y los mockups ya estaban sin seguimiento al comenzar; no se incluyen automáticamente en los commits de implementación.
 
-## Comparación final en desarrollo
+## Comparación inicial en desarrollo
 
 Se verificó en `http://localhost:3000`, sin cambiar `allowedDevOrigins` ni detener el servidor del usuario. Se preparó una referencia estática a partir del HTML del mockup, resolviendo sus expresiones y rutas de imágenes únicamente en el harness de verificación; la aplicación no usa esa estructura.
 
@@ -52,7 +52,7 @@ Se verificó en `http://localhost:3000`, sin cambiar `allowedDevOrigins` ni dete
 
 Las capturas y el harness de navegador se generaron en el directorio temporal de la sesión. Las pruebas persistentes son las de `npm test`; no se agregaron dependencias al proyecto. La validación visual se realizó en Chromium, no en Safari ni Firefox.
 
-## Criterios de aceptación
+## Criterios de aceptación iniciales
 
 - [x] Navbar y BurguerMenu sin diffs, comprobados también por hashes en las pruebas.
 - [x] Ningún color hex/rgb escrito en componentes fuera del header; tokens en globals.css.
@@ -67,3 +67,23 @@ Las capturas y el harness de navegador se generaron en el directorio temporal de
 - [x] Poster del hero sin filtros de color; scrim y brillo en capas independientes.
 - [x] Sin scroll horizontal a 390 px, también con embeds reales.
 - [x] Build sin errores.
+
+## Ajustes posteriores solicitados
+
+Estos cinco cambios autorizados reemplazan las decisiones originales correspondientes, sin alterar el header, el selector ni las fuentes de datos:
+
+1. El hero ocupa como mínimo el alto visible de pantalla (`100dvh`, con respaldo `100vh`) en escritorio y móvil. En ventanas excepcionalmente bajas puede crecer para no recortar contenido.
+2. La etiqueta del último lanzamiento aparece debajo de “LOUI KANG”.
+3. El punto y las numeraciones tienen resplandor constante, sin pulsos. Los CTA del hero, Music y Social tienen resplandor de color solo en hover con puntero compatible. Sus colores y sombras salen de tokens; las transiciones respetan movimiento reducido.
+4. En una columna, Music sigue el orden información → Spotify → CTA.
+5. En una columna, Social sigue el orden YouTube → Instagram → bloque de seguimiento y CTA.
+
+Se usa una sola instancia de cada grupo de enlaces y el DOM sigue ese orden móvil. Desde 1024 px, áreas de CSS Grid conservan los CTA a la izquierda y los embeds a la derecha, manteniendo las proporciones previas de las columnas.
+
+Verificación posterior: `npm test` pasa 16 pruebas, lint sin warnings y build correcto. En Chromium se comprobaron 390×844, 390×667, 768×1024, 1024×768, 1440×900, 1920×1080 y 844×390: altura del hero, orden visual, resplandor permanente, encendido/apagado del hover, ausencia de hover persistente en emulación táctil, selección de lanzamiento y ausencia de scroll horizontal. En estas pruebas de layout se simularon los proveedores externos; los embeds y sus URLs no se modificaron.
+
+### Header compacto y punto destacado
+
+En un pedido posterior se autorizó modificar únicamente la altura de la navbar: de 100 a 88 px en móvil y de 144 a 128 px en escritorio. Su fondo original, iconos, textos, enlaces y lógica no cambian; BurguerMenu permanece intacto. La prueba de protección de Navbar se actualiza a este nuevo estado autorizado.
+
+El punto de “Nuevo lanzamiento” pasa de 8 a 12 px, con un halo más amplio e intenso que combina los tokens `accent` y `accent-light`. Sigue siendo decorativo y su resplandor es fijo, sin pulsos.

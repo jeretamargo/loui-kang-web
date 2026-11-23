@@ -81,20 +81,20 @@ const Hero = ({ heroRef }: HeroProps) => {
       <div className="hero-scrim pointer-events-none absolute inset-0" aria-hidden="true" />
       <div className="hero-glow pointer-events-none absolute" aria-hidden="true" />
       <div className="redesign-container hero-content">
-        <p className="flex items-center gap-2.5 text-[13px] font-semibold tracking-[0.2em] uppercase">
-          <span className="size-2 rounded-full bg-accent" aria-hidden="true" />
+        <h1 className="hero-title font-display font-bold">LOUI KANG</h1>
+        <p className="mb-6 flex items-center gap-2.5 text-[13px] font-semibold tracking-[0.2em] uppercase">
+          <span className="size-3 rounded-full bg-accent shadow-release-glow" aria-hidden="true" />
           {latestRelease.type ? `Nuevo ${releaseTypeLabel[latestRelease.type]}` : "Nuevo lanzamiento"}
         </p>
-        <h1 className="hero-title font-display font-bold">LOUI KANG</h1>
         <div className="flex flex-wrap items-end justify-between gap-6">
           <p className="hero-release-copy text-cream/85">{releaseAnnouncement(latestRelease)}</p>
           <div className="flex flex-wrap gap-3">
-            <a href="#music" className="inline-flex min-h-13 items-center gap-2.5 rounded-full bg-accent px-7 text-base font-semibold text-cream transition-[filter] hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cream motion-reduce:transition-none">
+            <a href="#music" className="cta-glow inline-flex min-h-13 items-center gap-2.5 rounded-full bg-accent px-7 text-base font-semibold text-cream transition-[filter,box-shadow] duration-200 hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cream motion-reduce:transition-none">
               <svg viewBox="0 0 16 16" className="size-3.5 fill-current" aria-hidden="true"><path d="M4 2.5 13 8 4 13.5Z" /></svg>
               Escuchar ahora
             </a>
             {latestRelease.videoUrl && (
-              <a href={latestRelease.videoUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-13 items-center rounded-full border border-cream/40 px-7 text-base font-medium text-cream transition-colors hover:bg-cream/10 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cream motion-reduce:transition-none">
+              <a href={latestRelease.videoUrl} target="_blank" rel="noopener noreferrer" className="cta-glow inline-flex min-h-13 items-center rounded-full border border-cream/40 px-7 text-base font-medium text-cream transition-[background-color,box-shadow] duration-200 hover:bg-cream/10 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cream motion-reduce:transition-none">
                 Ver videoclip
               </a>
             )}

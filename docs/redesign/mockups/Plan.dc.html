@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Plan de rediseño</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Syncopate:wght@400;700&amp;display=swap">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 1200px; height: 1760px; box-sizing: border-box; padding: 72px; background: #0A0A0A; color: #F2ECE2; font-family: Inter, sans-serif; display: flex; flex-direction: column; gap: 48px">
+
+  <div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 32px">
+    <div>
+      <div style="font-size: 13px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: {{accentLight}}">Loui Kang · Sitio web</div>
+      <h1 style="margin: 14px 0 0; font-family: Syncopate, sans-serif; font-weight: 700; font-size: 48px; line-height: 1">PLAN DE REDISEÑO</h1>
+    </div>
+    <p style="margin: 0; max-width: 380px; font-size: 16px; line-height: 1.55; color: #C9C3B9">Alcance: todo el sitio excepto el <strong style="color: #F2ECE2">header</strong>, que queda exactamente como está hoy, incluido su fondo original (#0F1115 al 90%).</p>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px">
+    <div style="background: #161616; border-radius: 8px; padding: 28px">
+      <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #A9A49B; margin-bottom: 18px">Colores</div>
+      <div style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px">
+        <div><div style="height: 56px; border-radius: 6px; background: #0A0A0A; border: 1px solid rgba(242,236,226,0.2)"></div><div style="margin-top: 8px; font-size: 13px; font-weight: 600">Fondo</div><div style="font-size: 12px; color: #A9A49B">#0A0A0A</div></div>
+        <div><div style="height: 56px; border-radius: 6px; background: #161616; border: 1px solid rgba(242,236,226,0.2)"></div><div style="margin-top: 8px; font-size: 13px; font-weight: 600">Superficie</div><div style="font-size: 12px; color: #A9A49B">#161616</div></div>
+        <div><div style="height: 56px; border-radius: 6px; background: #F2ECE2"></div><div style="margin-top: 8px; font-size: 13px; font-weight: 600">Texto</div><div style="font-size: 12px; color: #A9A49B">#F2ECE2</div></div>
+        <div><div style="height: 56px; border-radius: 6px; background: #A9A49B"></div><div style="margin-top: 8px; font-size: 13px; font-weight: 600">Secundario</div><div style="font-size: 12px; color: #A9A49B">#A9A49B</div></div>
+        <div><div style="height: 56px; border-radius: 6px; background: {{accent}}"></div><div style="margin-top: 8px; font-size: 13px; font-weight: 600">Acento</div><div style="font-size: 12px; color: #A9A49B">{{accent}}</div></div>
+        <div><div style="height: 56px; border-radius: 6px; background: {{accentLight}}"></div><div style="margin-top: 8px; font-size: 13px; font-weight: 600">Acento claro</div><div style="font-size: 12px; color: #A9A49B">{{accentLight}}</div></div>
+      </div>
+    </div>
+    <div style="background: #161616; border-radius: 8px; padding: 28px">
+      <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #A9A49B; margin-bottom: 18px">Tipografía (la actual, ordenada)</div>
+      <div style="display: flex; flex-direction: column; gap: 10px">
+        <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 16px; border-bottom: 1px solid rgba(242,236,226,0.1); padding-bottom: 10px"><span style="font-family: Syncopate, sans-serif; font-weight: 700; font-size: 28px">LOUI KANG</span><span style="font-size: 12px; color: #A9A49B">Syncopate 700 · H1 156 / H2 64</span></div>
+        <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 16px; border-bottom: 1px solid rgba(242,236,226,0.1); padding-bottom: 10px"><span style="font-size: 22px; font-weight: 600">Frase destacada</span><span style="font-size: 12px; color: #A9A49B">Inter 600 · 40 / 26</span></div>
+        <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 16px; border-bottom: 1px solid rgba(242,236,226,0.1); padding-bottom: 10px"><span style="font-size: 17px; color: #C9C3B9">Texto de lectura</span><span style="font-size: 12px; color: #A9A49B">Inter 400 · 18 / 1.7</span></div>
+        <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 16px"><span style="font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase">Etiqueta</span><span style="font-size: 12px; color: #A9A49B">Inter 600 · 13 · +0.2em</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px">
+    <sc-for list="{{items}}" as="it" hint-placeholder-count="6">
+      <div style="background: #161616; border-radius: 8px; padding: 28px; display: flex; flex-direction: column; gap: 16px">
+        <div style="display: flex; align-items: center; justify-content: space-between">
+          <span style="font-family: Syncopate, sans-serif; font-weight: 700; font-size: 14px; color: {{accentLight}}">{{it.n}}</span>
+          <span style="font-size: 12px; color: #A9A49B">{{it.phase}}</span>
+        </div>
+        <h2 style="margin: 0; font-family: Syncopate, sans-serif; font-weight: 700; font-size: 20px; line-height: 1.2">{{it.title}}</h2>
+        <ul style="margin: 0; padding: 0 0 0 18px; display: flex; flex-direction: column; gap: 8px; font-size: 15px; line-height: 1.45; color: #C9C3B9; flex: 1">
+          <sc-for list="{{it.points}}" as="pt" hint-placeholder-count="4">
+            <li>{{pt}}</li>
+          </sc-for>
+        </ul>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap">
+          <span style="padding: 6px 12px; border-radius: 999px; border: 1px solid rgba(242,236,226,0.25); font-size: 12px; font-weight: 500">Prioridad: {{it.prio}}</span>
+          <span style="padding: 6px 12px; border-radius: 999px; border: 1px solid rgba(242,236,226,0.25); font-size: 12px; font-weight: 500">Esfuerzo: {{it.effort}}</span>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px">
+    <div style="background: #161616; border-radius: 8px; padding: 28px">
+      <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #A9A49B; margin-bottom: 18px">Orden de implementación</div>
+      <ol style="margin: 0; padding: 0 0 0 20px; display: flex; flex-direction: column; gap: 10px; font-size: 15px; line-height: 1.45">
+        <li><strong>Sistema visual</strong> — tokens en Tailwind (colores, escala, contenedor).</li>
+        <li><strong>Hero</strong> — degradado, CTA y poster del video.</li>
+        <li><strong>Music</strong> — pills de lanzamientos, cita y embed de Spotify.</li>
+        <li><strong>Bio</strong> — frase destacada y galería con miniaturas.</li>
+        <li><strong>Social</strong> — marcos unificados para los embeds.</li>
+        <li><strong>Footer, mobile y animaciones</strong> — pulido final.</li>
+      </ol>
+    </div>
+    <div style="background: #161616; border-radius: 8px; padding: 28px">
+      <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #A9A49B; margin-bottom: 18px">Contenido que falta</div>
+      <ul style="margin: 0; padding: 0 0 0 20px; display: flex; flex-direction: column; gap: 10px; font-size: 15px; line-height: 1.45">
+        <li>Año y tipo de cada lanzamiento (single / EP).</li>
+        <li>Link de Spotify y YouTube Music de cada lanzamiento.</li>
+        <li>Link al videoclip para el botón “Ver videoclip” del hero.</li>
+        <li>Contacto / booking: queda para una etapa futura.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#54457F","options":["#54457F","#4A3F6B","#5E4B8B","#6B5A9A"]},"accentLight":{"editor":"color","default":"#B3A6D9","options":["#B3A6D9","#C2B8E0","#A597CF","#F2ECE2"]},"$preview":{"width":1200,"height":1760}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      accent: this.props.accent ?? '#54457F',
+      accentLight: this.props.accentLight ?? '#B3A6D9',
+      items: [
+        { n: '01', phase: 'Fase 2', title: 'Hero', prio: 'Alta', effort: 'Bajo', points: [
+          'Degradado oscuro abajo del video para leer el texto y fundir con la Bio.',
+          'Etiqueta “Nuevo single” + CTA “Escuchar ahora” y “Ver videoclip”.',
+          'Imagen poster mientras carga el video (adiós “Cargando video…”).',
+          'Línea inferior con ubicación e indicador de scroll.'
+        ] },
+        { n: '02', phase: 'Fase 1', title: 'Sistema visual', prio: 'Alta', effort: 'Bajo', points: [
+          'Negro neutro + crema, acento violeta oscuro (botones) y violeta claro (textos). Estética trap actual.',
+          'Brillo violeta suave abajo del hero (el poster y el video mantienen su color).',
+          'Escala tipográfica fija: Syncopate para títulos, Inter para texto.',
+          'Títulos numerados “01 — BIO” con la misma alineación.',
+          'Contenedor de 1280 px y márgenes laterales iguales en todo el sitio.'
+        ] },
+        { n: '03', phase: 'Fase 4', title: 'Bio', prio: 'Media', effort: 'Bajo', points: [
+          'Frase destacada grande arriba del texto.',
+          'Texto en dos párrafos, máx. ~60 caracteres por línea.',
+          'Galería con miniaturas en lugar de flechas genéricas.'
+        ] },
+        { n: '04', phase: 'Fase 3', title: 'Music', prio: 'Alta', effort: 'Medio', points: [
+          'Botones de lanzamiento iguales a los actuales.',
+          'Se mantiene el embed de Spotify (sin API key), en un marco con sombra.',
+          'Título del lanzamiento en mayúsculas; sin cita ni portada, metadatos discretos.',
+          'Botones grandes a Spotify y YouTube Music, con el mismo peso.'
+        ] },
+        { n: '05', phase: 'Fase 5', title: 'Social', prio: 'Media', effort: 'Bajo', points: [
+          'Se mantienen los embeds de YouTube e Instagram.',
+          'Cada embed va en un marco igual: ícono, etiqueta y “Abrir ↗”.',
+          'Layout 2 + 1: video grande, post de Instagram al costado.',
+          'Bloque “Seguí a Loui Kang” con botones grandes e iguales a Instagram y YouTube.'
+        ] },
+        { n: '06', phase: 'Fase 6', title: 'Footer, mobile y movimiento', prio: 'Media', effort: 'Bajo', points: [
+          'Footer simple: logo, links, redes en texto y ©.',
+          'Revisar cada sección a 390 px de ancho.',
+          'Fade-up de 400 ms al entrar en pantalla y hover en botones.',
+          'Respetar prefers-reduced-motion.'
+        ] }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

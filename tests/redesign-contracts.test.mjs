@@ -8,9 +8,9 @@ import { fileURLToPath } from "node:url";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const read = relative => readFileSync(path.join(root, relative), "utf8");
 
-test("Navbar and BurguerMenu remain byte-for-byte identical to the initial working tree", () => {
+test("Navbar matches the authorized compact header and BurguerMenu remains unchanged", () => {
   for (const [name, expected] of [
-    ["Navbar", "d6c75113b31ef0dfbdba2346a67a2f9763d9bd79"],
+    ["Navbar", "88b49b225bfbb0708fc065200fa100b1abc77380"],
     ["BurguerMenu", "19409438f4a5711c805fb1cd13e80f6b5a603e1a"],
   ]) {
     const source = readFileSync(path.join(root, `app/components/${name}.tsx`));

@@ -42,8 +42,8 @@ export default function Social() {
     <section id="social" className="redesign-section" aria-labelledby="social-heading" data-reveal>
       <div className="redesign-container">
         <SectionHeading number="03" title="SOCIAL" id="social-heading" />
-        <div className="flex flex-wrap items-stretch gap-6">
-          <div className="flex min-w-0 flex-[2_1_520px] flex-col gap-6">
+        <div className="social-layout">
+          <div className="social-video min-w-0">
             <EmbedCard platform="YouTube" kind="Último video" href={socialContent.youtubeVideo} icon={<YouTubeIcon className="size-[22px]" />}>
               <iframe
                 src={socialContent.youtubeEmbed}
@@ -54,21 +54,21 @@ export default function Social() {
                 allowFullScreen
               />
             </EmbedCard>
-            <div className="flex flex-1 flex-wrap items-center justify-between gap-5 rounded-xl border border-cream/12 p-[clamp(20px,3vw,32px)]">
-              <div className="min-w-0">
-                <h3 className="font-display text-[clamp(20px,2.2vw,28px)] leading-[1.1] font-bold">SEGUÍ A LOUI KANG</h3>
-                <p className="mt-2 text-[15px] text-muted-2">Lanzamientos, videos y lo que pasa en el estudio.</p>
-              </div>
-              <div className="platform-grid w-full">
-                <PlatformButton href={artistLinks.instagram} icon={<InstagramIcon className="size-7.5" />} label="Instagram" />
-                <PlatformButton href={artistLinks.youtube} icon={<YouTubeIcon className="size-7.5" />} label="YouTube" />
-              </div>
-            </div>
           </div>
-          <div className="min-w-0 max-w-full flex-[1_1_340px] [&>article]:h-full">
+          <div className="social-instagram min-w-0 max-w-full [&>article]:h-full">
             <EmbedCard platform="Instagram" kind="Último post" href={socialContent.instagramPost} icon={<InstagramIcon className="size-[22px]" />}>
               <InstagramEmbed url={socialContent.instagramPost} width="100%" linkText="Ver publicación en Instagram" />
             </EmbedCard>
+          </div>
+          <div className="social-follow flex min-w-0 flex-wrap items-center justify-between gap-5 rounded-xl border border-cream/12 p-[clamp(20px,3vw,32px)]">
+            <div className="min-w-0">
+              <h3 className="font-display text-[clamp(20px,2.2vw,28px)] leading-[1.1] font-bold">SEGUÍ A LOUI KANG</h3>
+              <p className="mt-2 text-[15px] text-muted-2">Lanzamientos, videos y lo que pasa en el estudio.</p>
+            </div>
+            <div className="platform-grid w-full">
+              <PlatformButton href={artistLinks.instagram} icon={<InstagramIcon className="size-7.5" />} label="Instagram" />
+              <PlatformButton href={artistLinks.youtube} icon={<YouTubeIcon className="size-7.5" />} label="YouTube" />
+            </div>
           </div>
         </div>
       </div>

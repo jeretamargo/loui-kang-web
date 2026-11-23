@@ -1,0 +1,17 @@
+{
+  "v": 3,
+  "createdOnFiles": {"v": 1, "at": "2026-11-22T19:00:00Z"},
+  "title": "Loui Kang Rediseño",
+  "launch": {"view": "canvas"},
+  "pages": [],
+  "boards": {
+    "Plan.dc.html": {"x": 0, "y": 0, "w": 1200, "h": 1760, "title": "Plan de rediseño"},
+    "Main.dc.html": {"x": 1280, "y": 0, "w": 1440, "h": 4200, "title": "Mockup desktop", "expand": "fill", "is_interactive": true},
+    "Mobile.dc.html": {"x": 2800, "y": 0, "w": 390, "h": 5800, "title": "Mockup mobile", "is_interactive": true}
+  },
+  "order": ["Main.dc.html", "Plan.dc.html", "Mobile.dc.html"],
+  "notes": {
+    "title": {"x": 0, "y": -300, "text": "Loui Kang — Rediseño (header sin cambios)", "kind": "title1", "maxW": 3190}
+  },
+  "designSystems": []
+}

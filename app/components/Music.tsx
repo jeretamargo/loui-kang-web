@@ -26,8 +26,8 @@ export default function Music() {
     <section id="music" className="redesign-section bg-ink-2" aria-labelledby="music-heading" data-reveal>
       <div className="redesign-container">
         <SectionHeading number="02" title="MUSIC" id="music-heading" />
-        <div className="flex flex-wrap items-center gap-[clamp(40px,5vw,80px)]">
-          <div className="min-w-0 flex-[1_1_460px]">
+        <div className="music-layout">
+          <div className="music-info min-w-0">
             <div className="mb-8">
               <div
                 role="group"
@@ -55,16 +55,11 @@ export default function Music() {
             <p className="text-xs font-normal tracking-[0.14em] text-meta uppercase">
               {releaseMetadata(selectedRelease)}
             </p>
-            <h3 className="mt-2.5 mb-10 font-display text-[clamp(30px,4vw,54px)] leading-[1.02] font-bold tracking-[-0.01em] uppercase">
+            <h3 className="mt-2.5 mb-0 font-display text-[clamp(30px,4vw,54px)] leading-[1.02] font-bold tracking-[-0.01em] uppercase lg:mb-10">
               {selectedRelease.title}
             </h3>
-            <p className="mb-3.5 text-xs font-semibold tracking-[0.2em] text-muted uppercase">Escuchalo en</p>
-            <div className="platform-grid max-w-[560px]">
-              <PlatformButton href={selectedRelease.spotifyUrl} icon={<SpotifyIcon className="size-7.5" />} label="Spotify" />
-              <PlatformButton href={selectedRelease.ytMusicUrl} icon={<YtMusicIcon className="size-7.5" />} label="YouTube Music" />
-            </div>
           </div>
-          <div className="min-w-0 flex-[1_1_420px] md:shrink-0">
+          <div className="music-embed min-w-0 md:shrink-0">
             <div className="relative h-88 overflow-hidden rounded-xl bg-surface shadow-player" aria-busy={isLoading}>
               <iframe
                 key={selectedRelease.id}
@@ -89,6 +84,13 @@ export default function Music() {
               </noscript>
             </div>
             <p className="mt-3 text-xs text-muted">Reproductor oficial de Spotify.</p>
+          </div>
+          <div className="music-actions min-w-0">
+            <p className="mb-3.5 text-xs font-semibold tracking-[0.2em] text-muted uppercase">Escuchalo en</p>
+            <div className="platform-grid max-w-[560px]">
+              <PlatformButton href={selectedRelease.spotifyUrl} icon={<SpotifyIcon className="size-7.5" />} label="Spotify" />
+              <PlatformButton href={selectedRelease.ytMusicUrl} icon={<YtMusicIcon className="size-7.5" />} label="YouTube Music" />
+            </div>
           </div>
         </div>
       </div>

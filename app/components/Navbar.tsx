@@ -28,7 +28,7 @@ interface Props {
 
 const Navbar = ({ setOpen, isHeroVisible }: Props) => {
   return (
-    <div className="fixed top-0 left-0 bg-[#0F1115]/90 flex items-center justify-between w-full z-10 gap-x-2  px-6 md:px-12 lg:px-12 backdrop-blur-md h-25 md:h-36 ">
+    <div className="fixed top-0 left-0 bg-[#0F1115]/90 flex items-center justify-between w-full z-10 gap-x-2  px-6 md:px-12 lg:px-12 backdrop-blur-md h-22 md:h-32 ">
       <button onClick={() => setOpen(true)}>
         <BurguerMenuIcon className=" inline-block  w-10 md:hidden "></BurguerMenuIcon>
       </button>
